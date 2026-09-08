@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- set page_title %}{% block title %}{{ clinic.name }} — 척추·관절·비수술·도수치료{% endblock %}{% endset -%}
+{%- set page_desc %}{% block description %}정형외과 전문의가 직접 진단하고 치료하는 {{ clinic.name }}. 척추·관절 클리닉, 비수술 재생치료, 도수·운동치료.{% endblock %}{% endset -%}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc }}">
+<link rel="canonical" href="{{ site_url }}{{ request.path }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ clinic.name }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url" content="{{ site_url }}{{ request.path }}">
+<meta property="og:image" content="{{ site_url }}{{ url_for('static', filename='img/og-image.jpg') }}">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1E2188">
+{% if naver_site_verification %}<meta name="naver-site-verification" content="{{ naver_site_verification }}">{% endif %}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+<script type="application/ld+json">{{ jsonld_clinic()|safe }}</script>
+{% block head %}{% endblock %}
+</head>
+<body{% if page_id %} data-page="{{ page_id }}"{% endif %}{% if active_tab %} data-active-tab="{{ active_tab }}"{% endif %}>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header id="top">
+  <div class="wrap" style="position:relative">
+    <a class="logo" href="{{ url_for('pages.index') }}">
+      <img src="{{ url_for('static', filename='img/logo-mark.png') }}" alt="" width="220" height="175">
+      <span class="name">{{ clinic.name }}<small>{{ clinic.en }}</small></span>
+    </a>
+    <button class="ham" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="mnav"></button>
+  </div>
+  <nav aria-label="주 메뉴"><div class="wrap"><ul>
+    <li><a href="{{ url_for('pages.about') }}">병원소개</a></li><li><a href="{{ url_for('pages.doctor') }}">의료진소개</a></li><li><a href="{{ url_for('pages.clinic', tab='spine') }}">척추·관절 클리닉</a></li>
+    <li><a href="{{ url_for('pages.clinic', tab='nonsurgical') }}">비수술 클리닉</a></li><li><a href="{{ url_for('pages.clinic', tab='manual') }}">도수·운동 클리닉</a></li><li><a href="{{ url_for('pages.about') }}#tour">병원 둘러보기</a></li><li><a href="{{ url_for('pages.location') }}">오시는길</a></li>
+  </ul></div></nav>
+  <nav class="mnav" id="mnav" aria-label="모바일 메뉴">
+    <a href="{{ url_for('pages.about') }}">병원소개</a><a href="{{ url_for('pages.doctor') }}">의료진소개</a><a href="{{ url_for('pages.clinic', tab='spine') }}">척추·관절 클리닉</a>
+    <a href="{{ url_for('pages.clinic', tab='nonsurgical') }}">비수술 클리닉</a><a href="{{ url_for('pages.clinic', tab='manual') }}">도수·운동 클리닉</a><a href="{{ url_for('pages.about') }}#tour">병원 둘러보기</a><a href="{{ url_for('pages.location') }}">오시는길</a>
+  </nav>
+</header>
+
+<aside class="quick" aria-label="퀵메뉴">
+  <a href="{{ url_for('pages.location') }}"><b><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></b>오시는길</a>
+  <a href="{{ clinic.blog_url }}"{% if clinic.blog_url != '#' %} target="_blank" rel="noopener"{% endif %}><b><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 18l-2 3M16 18l2 3M7 9h10M7 13h6"/></svg></b>블로그</a>
+  <a href="#inqModal" data-open-inquiry><b><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg></b>예약</a>
+  <a class="top" href="#top">TOP ▲</a>
+</aside>
+<nav class="mbar" aria-label="모바일 바로가기"><a href="tel:{{ clinic.tel_link }}">전화</a><a href="{{ map_link }}" target="_blank" rel="noopener">길찾기</a><a href="#inqModal" data-open-inquiry>예약</a></nav>
+
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a class="flogo" href="{{ url_for('pages.index') }}"><img src="{{ url_for('static', filename='img/logo-mark-white.png') }}" alt="" width="220" height="175" loading="lazy"><span>{{ clinic.name }}<small>{{ clinic.en }}</small></span></a>
+      <div class="links"><a href="{{ url_for('pages.about') }}">병원소개</a><a href="{{ url_for('pages.location') }}">오시는길</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a></div>
+    </div>
+    <p>{{ clinic.address }}<br>대표자 : {{ clinic.ceo }} &nbsp; 사업자등록번호 : {{ clinic.biz_no }} &nbsp; 전화 : {{ clinic.tel }} &nbsp; 팩스 : {{ clinic.fax }}</p>
+    <p class="copy">Copyright © {{ clinic.name }}. All rights reserved.</p>
+  </div>
+</footer>
+
+{% from "_macros.html" import inquiry_form with context %}
+<div class="modal" id="inqModal" role="dialog" aria-modal="true" aria-labelledby="inqModalTitle">
+  {{ inquiry_form('m', title='상담 예약 문의', modal=True) }}
+</div>
+
+{% if kakao_js_key %}<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_js_key }}&autoload=false"></script>{% endif %}
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_band, loc_split, hours_table, inquiry_form with context %}
+{% block title %}오시는길·진료시간 — {{ clinic.name }} {{ clinic.region }} 정형외과{% endblock %}
+{% block description %}{{ clinic.name }} 오시는길. {{ clinic.address }}, 전화 {{ clinic.tel }}. 진료시간·주차 안내와 상담 문의.{% endblock %}
+
+{% block content %}
+{{ page_band('오시는길', [('오시는길', None)]) }}
+
+<section class="loc" id="loc">
+  <div class="wrap"><h2>진료안내 &amp; 오시는길</h2></div>
+  {{ loc_split() }}
+</section>
+
+<section class="park">
+  <div class="wrap">
+    <h2>주차 · 휴진 안내</h2>
+    <div class="grid">
+      <div class="card2"><h3>주차 안내</h3><p>{{ clinic.parking }}<br>{{ clinic.address }}</p></div>
+      <div class="card2"><h3>휴진 안내</h3><p>{{ clinic.closed }}<br>{% for h in clinic.hours %}{{ h.label }} {{ h.time }}{% if h.note %} {{ h.note }}{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %}</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="inquiry">
+  <div class="wrap">
+    <span class="kicker">CONTACT</span>
+    <h2>상담 문의</h2>
+    <p class="sub">이름과 연락처를 남겨 주시면 확인 후 연락드립니다. 급한 문의는 <a href="tel:{{ clinic.tel_link }}" style="color:var(--c-teal);font-weight:600">{{ clinic.tel }}</a>으로 전화 주세요.</p>
+    {{ inquiry_form('p', title='') }}
+  </div>
+</section>
+{% endblock %}

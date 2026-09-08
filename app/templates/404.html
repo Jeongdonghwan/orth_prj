@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}페이지를 찾을 수 없습니다 — {{ clinic.name }}{% endblock %}
+{% block content %}
+<section class="nf">
+  <div class="wrap">
+    <h1>404</h1>
+    <p>요청하신 페이지가 없거나 주소가 바뀌었습니다.</p>
+    <a class="btn on" href="{{ url_for('pages.index') }}">메인으로 돌아가기</a>
+  </div>
+</section>
+{% endblock %}

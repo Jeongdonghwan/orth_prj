@@ -1,0 +1,196 @@
+{# ---------- 공통 매크로. base/index/서브페이지에서 with context 로 import ---------- #}
+
+{% macro img(name, alt='', lazy=True, w=1600, h=900) -%}
+<img src="{{ url_for('static', filename='img/' ~ name) }}" alt="{{ alt }}" width="{{ w }}" height="{{ h }}"{% if lazy %} loading="lazy"{% endif %}>
+{%- endmacro %}
+
+{% macro svg(name) -%}{{ url_for('static', filename='svg/' ~ name ~ '.svg') }}{%- endmacro %}
+
+{# 사진 placeholder 박스 — 실사진이 들어오면 파일만 교체 #}
+{% macro ph(name, label='', cls='', alt='', lazy=True, w=1600, h=900) -%}
+<div class="ph {{ cls }}" data-name="{{ name }}">{{ label }}{{ img(name, alt, lazy, w, h) }}</div>
+{%- endmacro %}
+
+{# 서브페이지 상단 띠 #}
+{% macro page_band(title, crumbs) -%}
+<section class="pband">
+  <div class="bg" aria-hidden="true"><img src="{{ url_for('static', filename='img/hero.jpg') }}" alt="" width="1920" height="1080"></div>
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+    <nav class="crumb" aria-label="현재 위치"><a href="{{ url_for('pages.index') }}">HOME</a>{% for label, url in crumbs %}<span>›</span>{% if url %}<a href="{{ url }}">{{ label }}</a>{% else %}{{ label }}{% endif %}{% endfor %}</nav>
+  </div>
+</section>
+{%- endmacro %}
+
+{# 4대 클리닉 그리드. inpage=True 면 메인 앵커, 아니면 /clinic?tab= #}
+{% macro clinics_grid(inpage=False) -%}
+{% set L = {'spine': '#clinic', 'joint': '#clinic', 'nonsurgical': '#ns', 'manual': '#steps'} if inpage else
+           {'spine': url_for('pages.clinic', tab='spine'), 'joint': url_for('pages.clinic', tab='joint'), 'nonsurgical': url_for('pages.clinic', tab='nonsurgical'), 'manual': url_for('pages.clinic', tab='manual')} %}
+<div class="clinics">
+  <a href="{{ L.spine }}"><div class="ic"><img src="{{ svg('icon-spine') }}" alt="" width="54" height="54"></div><h3>척추클리닉</h3><p>목·허리 디스크, 척추관협착증,<br>일자목·거북목, 척추압박골절,<br>수술 후 통증</p></a>
+  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>퇴행성 관절염, 어깨 회전근개·오십견,<br>테니스엘보·골프엘보,<br>손목·발목 통증</p></a>
+  <a href="{{ L.nonsurgical }}"><div class="ic"><img src="{{ svg('icon-injection') }}" alt="" width="54" height="54"></div><h3>비수술클리닉</h3><p>신경차단술, 인대강화 주사,<br>DNA 주사, 체외충격파,<br>연골재생 치료</p></a>
+  <a href="{{ L.manual }}"><div class="ic"><img src="{{ svg('icon-manual') }}" alt="" width="54" height="54"></div><h3>도수·운동클리닉</h3><p>만성통증 도수치료, 근막 이완,<br>체형교정, 1:1 맞춤 운동치료</p></a>
+</div>
+{%- endmacro %}
+
+{# 대표원장 섹션 #}
+{% macro doctor_section() -%}
+<section class="doctor" id="doctor">
+  {{ ph('doctor-bg.jpg') }}
+  <div class="wrap">
+    <div class="info">
+      <h2>대학병원에서 쌓은 경험을,<br><span class="thin">동네에서 편하게.</span></h2>
+      <p class="nm">{{ clinic.doctor }}<span>{{ clinic.doctor_title }}</span></p>
+      <div class="bio-ph">원장님 이력이 들어갈 자리입니다.</div>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{# 수술 경험 섹션 #}
+{% macro surgery_section() -%}
+<section class="surg">
+  <div class="wrap">
+    <h2>수술을 많이 해본 전문의라서,<br><span class="thin">수술 없이 낫는 길도 압니다.</span></h2>
+    <p class="sub">수술이 꼭 필요한 경우와 아닌 경우를 구분하는 것이 진료의 시작입니다.</p>
+    <div class="grid">
+      {{ ph('surgery-1.jpg', '', '', '영상 판독', True, 1200, 800) }}{{ ph('surgery-2.jpg', '', '', '척추 영상 진단', True, 1200, 800) }}{{ ph('surgery-3.jpg', '', '', '수술실', True, 1200, 800) }}
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{# 탭 버튼. tabs = [(id, label), ...] #}
+{% macro clinic_tabs(tabs, active='spine') -%}
+<div class="tabs" role="tablist">{% for id, label in tabs %}<button class="btn{% if id == active %} on{% endif %}" data-tab="{{ id }}" type="button" role="tab" aria-selected="{{ 'true' if id == active else 'false' }}">{{ label }}</button>{% endfor %}</div>
+{%- endmacro %}
+
+{# 척추 패널 #}
+{% macro spine_panel(active=True) -%}
+<div class="panel{% if active %} on{% endif %}" id="spine">
+  <div>
+    <h3><b>척추 질환</b>은 대부분 만성적이며,<br><b>반복되는 자세 습관</b>에서 시작됩니다.</h3>
+    <p class="body">척추 질환은 나이 든 분들의 병으로 여겨지지만, 오래 앉아 일하는 젊은 층에서도 빠르게 늘고 있습니다. 통증이 있을 때 치료하는 것만큼, 척추에 무리를 주지 않는 자세와 생활습관을 익히는 것이 재발을 막는 데 중요합니다. 초기에 정확히 검사하고 단계에 맞는 치료를 받으면 대부분 수술 없이 관리할 수 있습니다.</p>
+    <span class="tag">척추질환의 종류</span>
+    <ul class="two"><li>목·허리 디스크</li><li>일자목·거북목</li><li>척추관협착증, 척추측만증</li><li>수술 후 통증</li><li>척추압박골절</li><li>신경성 두통</li></ul>
+    <span class="tag">척추질환에 적용되는 비수술치료</span>
+    <ul class="tx">
+      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>체외충격파</li><li><i><img src="{{ svg('icon-spine') }}" alt="" width="30" height="30"></i>신경차단술</li>
+      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>인대강화 주사</li><li><i><img src="{{ svg('icon-manual') }}" alt="" width="30" height="30"></i>도수·체형교정</li>
+    </ul>
+  </div>
+  {{ ph('fig-spine.jpg', '', 'fig', '척추 검진', True, 800, 940) }}
+</div>
+{%- endmacro %}
+
+{# 관절 패널 #}
+{% macro joint_panel(active=False) -%}
+<div class="panel{% if active %} on{% endif %}" id="joint">
+  <div>
+    <h3><b>관절</b>은 한 번 닳으면 되돌리기 어렵습니다.<br><b>늦기 전에 지키는 치료</b>를 합니다.</h3>
+    <p class="body">무릎·어깨·손목·발목 관절은 매일 쓰는 만큼 손상도 빠릅니다. 통증을 참고 지내다 보면 연골 손상이 진행되어 치료 선택지가 줄어듭니다. 초음파로 인대·힘줄 상태를 확인하고, 주사·충격파·운동치료를 조합해 관절 기능을 최대한 보존합니다.</p>
+    <span class="tag">관절질환의 종류</span>
+    <ul class="two"><li>퇴행성 관절염</li><li>손목터널증후군</li><li>어깨 회전근개 파열·오십견</li><li>발목 염좌·족저근막염</li><li>테니스엘보·골프엘보</li><li>무릎 연골·인대 손상</li></ul>
+    <span class="tag">관절질환에 적용되는 비수술치료</span>
+    <ul class="tx">
+      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>연골주사</li><li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>프롤로·DNA 주사</li>
+      <li><i><img src="{{ svg('icon-joint') }}" alt="" width="30" height="30"></i>체외충격파</li><li><i><img src="{{ svg('icon-manual') }}" alt="" width="30" height="30"></i>도수·운동치료</li>
+    </ul>
+  </div>
+  {{ ph('fig-joint.jpg', '', 'fig', '무릎 관절 치료', True, 800, 940) }}
+</div>
+{%- endmacro %}
+
+{# 비수술 POINT 본문 (메인 .box / 클리닉 페이지 .panel 공용) #}
+{% macro ns_points() -%}
+<div>
+  <span class="pt">POINT 1</span>
+  <h3>통증을 잠시 가리는 치료가 <b>아닙니다.</b></h3>
+  <p>손상된 인대·근육·힘줄 조직의 재생을 돕는 근본 치료를 합니다. 최근 젊은 층에서도 늘고 있는 다양한 관절 질환에 맞춰 치료법을 제안합니다.</p>
+  <div class="p2"><span class="pt">POINT 2</span>
+  <h3>스테로이드 주사가 <b>아닙니다.</b></h3>
+  <p>인체에 부담이 적은 성분을 사용해 임산부·고령·기저질환 환자도 상담 후 치료할 수 있습니다.</p></div>
+  <ul class="kw">
+    <li><b>정확</b>통증 부위<br>전문의 1:1 진단</li><li><b>정밀</b>개인 맞춤<br>치료 설계</li><li><b>회복</b>통증 개선<br>인대 강화</li><li><b>안전</b>신체 스스로의<br>재생을 돕는 치료</li>
+  </ul>
+</div>
+{{ ph('fig-nonsurgical.jpg', '', 'fig', '무릎 비수술 치료', True, 800, 960) }}
+{%- endmacro %}
+
+{# 도수치료 STEP 카드 4개 #}
+{% macro steps_cards() -%}
+<div class="step"><span class="n">STEP 01</span><h3>진단</h3><p>정형외과 전문의가 진단 후 도수치료 필요 여부를 결정하고, 신체 기능을 평가합니다.</p></div>
+<div class="step"><span class="n">STEP 02</span><h3>계획</h3><p>검사 결과를 바탕으로 치료 목표를 정하고, 전문 치료사와 1:1 맞춤 도수치료를 시작합니다.</p></div>
+<div class="step"><span class="n">STEP 03</span><h3>재평가</h3><p>치료 경과를 주기적으로 확인하고, 호전 정도에 따라 치료 강도와 계획을 조정합니다.</p></div>
+<div class="step"><span class="n">STEP 04</span><h3>자가관리</h3><p>재발을 막기 위해 집에서 할 수 있는 근력 운동과 자세 교정법을 알려드립니다.</p></div>
+{%- endmacro %}
+
+{# 척추·디스크 카드 슬라이더 섹션. only_tab 지정 시 해당 탭일 때만 표시 (클리닉 페이지) #}
+{% macro disc_section(only_tab=None) -%}
+<section class="disc"{% if only_tab %} data-only-tab="{{ only_tab }}"{% endif %}>
+  <div class="wrap">
+    <span class="lbl">수술을 권유받으셨나요?</span>
+    <h2>척추 · 디스크 <span style="color:var(--c-teal)">클리닉</span></h2>
+    <p class="sub">척추·디스크 질환의 상당수는 수술 없이 호전됩니다. 정확한 진단 후 보존적 치료로 충분히 나아질 수 있는 경우, 불필요한 수술을 권하지 않습니다.</p>
+    <div class="slider">
+      <div class="track">
+        <div class="card">{{ ph('card-disc.jpg', '', 'im', '허리·목 디스크', True, 800, 500) }}<div class="tt"><h3>허리·목 디스크</h3><p>튀어나온 디스크가 신경을 눌러 생기는 통증·저림</p></div></div>
+        <div class="card">{{ ph('card-scoliosis.jpg', '', 'im', '척추측만증', True, 800, 500) }}<div class="tt"><h3>척추측만증</h3><p>척추가 옆으로 휘어 자세·통증 문제가 생기는 질환</p></div></div>
+        <div class="card">{{ ph('card-stenosis.jpg', '', 'im', '척추관협착증', True, 800, 500) }}<div class="tt"><h3>척추관협착증</h3><p>신경이 지나는 통로가 좁아져 오래 걷기 힘든 증상</p></div></div>
+        <div class="card">{{ ph('card-fracture.jpg', '', 'im', '척추압박골절', True, 800, 500) }}<div class="tt"><h3>척추압박골절</h3><p>골다공증 등으로 척추뼈가 내려앉는 골절</p></div></div>
+        <div class="card">{{ ph('card-neck.jpg', '', 'im', '일자목·거북목', True, 800, 500) }}<div class="tt"><h3>일자목·거북목</h3><p>목 곡선이 사라져 생기는 두통·어깨 결림</p></div></div>
+      </div>
+      <button class="arr l" type="button" aria-label="이전">‹</button><button class="arr r" type="button" aria-label="다음">›</button>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{# 병원 둘러보기 그리드 (대표 + 썸네일 6) #}
+{% macro tour_grid() -%}
+<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', '병원 로비') }}</div>
+<div class="thumbs">
+  {% for i in range(1, 7) %}<div class="ph{% if i == 1 %} on{% endif %}" data-name="tour-{{ i }}.jpg" role="button" tabindex="0" aria-label="사진 {{ i }} 보기">{{ img('tour-' ~ i ~ '.jpg', '병원 내부 ' ~ i, True, 1200, 800) }}</div>{% endfor %}
+</div>
+{%- endmacro %}
+
+{# 진료시간 표 #}
+{% macro hours_table() -%}
+<ul class="hours">
+  {% for h in clinic.hours %}<li><b>{{ h.label }}</b><span>{{ h.time }}{% if h.note %} <em>{{ h.note }}</em>{% endif %}</span></li>{% endfor %}
+</ul>
+{%- endmacro %}
+
+{# 카카오맵 + 진료안내 스플릿 #}
+{% macro loc_split() -%}
+<div class="split">
+  <div class="map" id="map"{% if clinic.lat is not none and clinic.lng is not none %} data-lat="{{ clinic.lat }}" data-lng="{{ clinic.lng }}" data-name="{{ clinic.name }}"{% endif %}>
+    <div class="ph" data-name="kakao-map">{% if kakao_js_key and clinic.lat is not none %}지도를 불러오는 중…{% else %}카카오맵 (KAKAO_JS_KEY · CLINIC_LAT/LNG 설정 시 표시){% endif %}</div>
+    <a class="btn map-btn" href="{{ map_link }}" target="_blank" rel="noopener">길찾기</a>
+  </div>
+  <div class="info">
+    <div class="tel"><a href="tel:{{ clinic.tel_link }}">☎ {{ clinic.tel }}</a></div>
+    <p class="addr">📍 {{ clinic.address }}</p>
+    {{ hours_table() }}
+    <p class="note">* {{ clinic.closed }} &nbsp;&nbsp; * 주차: {{ clinic.parking }}</p>
+  </div>
+</div>
+{%- endmacro %}
+
+{# 상담 문의 폼. prefix 로 id 충돌 방지 #}
+{% macro inquiry_form(prefix, title='상담 문의', modal=False) -%}
+<form class="form inq-form" id="{{ prefix }}-form" method="post" action="/api/inquiry" novalidate>
+  {% if modal %}<button class="x" type="button" aria-label="닫기">×</button>{% endif %}
+  {% if title %}<h3{% if modal %} id="inqModalTitle"{% endif %}>{{ title }}</h3>{% endif %}
+  <div class="row"><label for="{{ prefix }}-name">이름 <i>*</i></label><input id="{{ prefix }}-name" name="name" type="text" maxlength="50" required autocomplete="name"></div>
+  <div class="row"><label for="{{ prefix }}-phone">연락처 <i>*</i></label><input id="{{ prefix }}-phone" name="phone" type="tel" maxlength="20" required autocomplete="tel" placeholder="010-0000-0000"></div>
+  <div class="row"><label for="{{ prefix }}-part">증상 부위</label>
+    <select id="{{ prefix }}-part" name="part"><option value="목">목</option><option value="허리">허리</option><option value="무릎">무릎</option><option value="어깨">어깨</option><option value="기타">기타</option></select></div>
+  <div class="row"><label for="{{ prefix }}-message">문의 내용</label><textarea id="{{ prefix }}-message" name="message" maxlength="2000" placeholder="증상과 희망 진료 시간을 적어 주세요."></textarea></div>
+  <div class="hp" aria-hidden="true"><label for="{{ prefix }}-website">website</label><input id="{{ prefix }}-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <div class="row"><label class="agree"><input name="agree" type="checkbox" required><span>[필수] 상담 목적으로 이름·연락처를 수집하며, 상담 완료 후 1년 보관 뒤 파기합니다. 동의하지 않으면 접수할 수 없습니다.</span></label></div>
+  <button class="btn on" type="submit">문의 접수</button>
+  <p class="msg" aria-live="polite"></p>
+</form>
+{%- endmacro %}

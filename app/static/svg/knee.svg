@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 480" fill="none" stroke="#3A9AA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs><style>.f{fill:#E6F2F3}.w{fill:#fff}.c{fill:#3A9AA3;opacity:.45;stroke:none}</style></defs>
+  <!-- 대퇴골 -->
+  <path d="M132 20h56l4 150c22 6 40 24 44 46-10 14-30 22-48 20-8 10-20 14-28 14s-20-4-28-14c-18 2-38-6-48-20 4-22 22-40 44-46l4-150z" class="w"/>
+  <!-- 경골 -->
+  <path d="M112 288c14-10 82-10 96 0l-6 172h-84l-6-172z" class="w"/>
+  <!-- 비골 -->
+  <path d="M222 300c8 20 8 120 4 160h-14c-2-40-4-120 0-160z" class="w"/>
+  <!-- 반월판/연골 -->
+  <path d="M112 262c14-12 82-12 96 0 6 10 6 20 0 26-14 10-82 10-96 0-6-6-6-16 0-26z" class="c"/>
+  <!-- 인대 -->
+  <path d="M148 236c4 20-2 40 6 52M172 236c-4 20 2 40-6 52" stroke-dasharray="3 4"/>
+  <path d="M106 248c-6 20-4 40 0 60M214 248c6 20 4 40 0 60"/>
+  <!-- 슬개골 -->
+  <ellipse cx="160" cy="230" rx="24" ry="30" class="f"/>
+  <g font-family="Pretendard, sans-serif" font-size="12" fill="#6B7378" stroke="none">
+    <text x="236" y="96">대퇴골</text>
+    <text x="236" y="234">슬개골</text><line x1="190" y1="230" x2="232" y2="230" stroke="#C9D2D6"/>
+    <text x="236" y="280">연골·반월판</text><line x1="212" y1="276" x2="232" y2="276" stroke="#C9D2D6"/>
+    <text x="236" y="420">경골</text>
+    <text x="40" y="280">인대</text><line x1="72" y1="276" x2="104" y2="276" stroke="#C9D2D6"/>
+  </g>
+</svg>

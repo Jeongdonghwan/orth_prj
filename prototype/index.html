@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[병원명]정형외과의원 — 척추·관절·비수술·도수치료</title>
+<meta name="description" content="정형외과 전문의가 직접 진단하고 치료하는 [병원명]정형외과의원. 척추·관절 클리닉, 비수술 재생치료, 도수·운동치료.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+:root{
+  --c-deep:#1F3B45;--c-teal:#3A9AA3;--c-teal-soft:#E6F2F3;--c-ink:#222;--c-mute:#6B7378;
+  --c-line:#E3E7E9;--c-bg:#F6F8F8;--c-footer:#2B2B2B;
+  --w:1200px;--sec:110px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Pretendard,-apple-system,"Malgun Gothic",sans-serif;color:var(--c-ink);line-height:1.8;font-size:16px;word-break:keep-all;background:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+section{padding:var(--sec) 0}
+h1,h2,h3{line-height:1.3;font-weight:700}
+h2{font-size:34px;text-align:center}
+h2 .thin{font-weight:400}
+.sub{text-align:center;color:var(--c-mute);margin-top:16px;font-size:17px}
+.kicker{display:block;text-align:center;font-size:13px;letter-spacing:.18em;color:var(--c-teal);margin-bottom:14px}
+.btn{display:inline-block;padding:12px 30px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--c-teal);color:var(--c-teal);background:#fff;cursor:pointer;transition:.2s}
+.btn.on,.btn:hover{background:var(--c-teal);color:#fff}
+/* 사진 placeholder — 실제 개발에서는 <img>로 교체 */
+.ph{background:#D6DCDF;color:#7d878c;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.05em;position:relative;overflow:hidden}
+.ph::after{content:attr(data-name);position:absolute;bottom:10px;right:12px;font-size:11px;opacity:.7}
+
+/* header */
+header{background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid var(--c-line)}
+.logo{display:flex;justify-content:center;align-items:center;gap:10px;padding:18px 0 12px}
+.logo .mark{width:34px;height:34px;border:2px solid var(--c-deep);border-radius:8px;display:grid;place-items:center;font-weight:800;color:var(--c-deep);font-size:14px}
+.logo .name{font-size:20px;font-weight:700;color:var(--c-deep);line-height:1.1}
+.logo .name small{display:block;font-size:10px;letter-spacing:.2em;color:var(--c-mute);font-weight:500}
+nav ul{display:flex;justify-content:center;gap:40px;padding:10px 0 12px;font-size:14px;font-weight:500}
+nav a:hover{color:var(--c-teal)}
+.ham{display:none}
+
+/* quick menu */
+.quick{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:40;background:#fff;border:1px solid var(--c-line);border-radius:6px;overflow:hidden;width:64px;text-align:center;font-size:11px}
+.quick a{display:block;padding:12px 4px;border-bottom:1px solid var(--c-line);color:var(--c-mute)}
+.quick a b{display:block;width:22px;height:22px;border:1.5px solid var(--c-teal);border-radius:50%;margin:0 auto 4px}
+.quick .top{background:var(--c-teal);color:#fff;font-weight:700;border:0;padding:10px}
+.mbar{display:none}
+
+/* hero */
+.hero{padding:0;height:560px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero .ph{position:absolute;inset:0;background:#4c5c62}
+.hero .txt{position:relative;animation:up .6s ease both}
+.hero h1{font-size:44px;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.hero h1 .thin{font-weight:400}
+.hero p{margin-top:16px;font-size:18px;opacity:.9}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* clinics */
+.clinics{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:64px;text-align:center}
+.clinics .ic{width:104px;height:104px;border:1.5px solid var(--c-line);border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;background:#fff;transition:.2s}
+.clinics .ic img{width:54px}
+.clinics a:hover .ic{border-color:var(--c-teal);background:var(--c-teal-soft)}
+.clinics h3{font-size:20px;margin-bottom:8px}
+.clinics p{font-size:14px;color:var(--c-mute);line-height:1.7}
+
+/* doctor */
+.doctor{background:var(--c-deep);color:#fff;position:relative;overflow:hidden;padding:0}
+.doctor>.ph{position:absolute;inset:0;background:#33515b;opacity:.5}
+.doctor .wrap{position:relative;display:grid;grid-template-columns:400px 1fr;gap:60px;align-items:end;min-height:560px}
+.doctor .photo{height:520px;background:#5b6f76;align-self:end}
+.doctor .info{padding:80px 0 60px}
+.doctor h2{text-align:left;color:#fff}
+.doctor .nm{margin-top:40px;font-size:24px;font-weight:700}
+.doctor .nm span{font-size:14px;font-weight:400;opacity:.8;margin-left:8px}
+.doctor .cols{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;margin-top:20px;font-size:14px;line-height:1.9;opacity:.92}
+.doctor .cols li::before{content:"·";margin-right:6px;opacity:.6}
+.doctor .cols.en{margin-top:24px;grid-template-columns:1fr}
+
+/* surgery */
+.surg .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
+.surg .ph{height:220px}
+
+/* spine/joint tabs */
+.sj{background:var(--c-bg)}
+.tabs{display:flex;justify-content:center;gap:16px;margin-top:40px}
+.panel{display:none;background:#fff;margin-top:36px;padding:56px 60px;grid-template-columns:1fr 380px;gap:60px;align-items:center}
+.panel.on{display:grid}
+.panel h3{font-size:28px;font-weight:400}
+.panel h3 b{font-weight:700}
+.panel .body{color:var(--c-mute);font-size:15px;margin-top:20px;line-height:1.9}
+.tag{display:inline-block;background:var(--c-deep);color:#fff;font-size:13px;padding:3px 10px;margin:32px 0 12px;font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;font-size:14px;color:var(--c-mute)}
+.two li::before{content:"·";margin-right:6px}
+.tx{display:flex;gap:28px;font-size:13px;text-align:center;color:var(--c-mute)}
+.tx i{display:block;width:56px;height:56px;border-radius:50%;background:var(--c-teal-soft);margin:0 auto 8px;display:grid;place-items:center}
+.tx i img{width:30px}
+.panel .fig{background:var(--c-teal-soft);padding:30px;height:460px}
+.panel .fig img{height:100%;width:100%;object-fit:contain}
+
+/* disc slider */
+.disc .lbl{display:table;margin:0 auto 12px;background:var(--c-teal);color:#fff;font-size:13px;padding:2px 14px;font-weight:600}
+.disc .sub{max-width:720px;margin-left:auto;margin-right:auto}
+.slider{position:relative;margin-top:50px;overflow:hidden}
+.track{display:flex;gap:20px;transition:transform .3s}
+.card{flex:0 0 calc((100% - 40px)/3);border:1px solid var(--c-line);border-radius:4px;overflow:hidden;background:#fff}
+.card .im{background:var(--c-teal-soft);padding:20px;height:200px}
+.card .im img{height:100%;width:100%;object-fit:contain}
+.card .tt{padding:20px 22px}
+.card h3{font-size:19px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--c-mute);line-height:1.6}
+.arr{position:absolute;top:110px;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--c-line);cursor:pointer;font-size:18px;color:var(--c-deep)}
+.arr.l{left:0}.arr.r{right:0}
+
+/* non-surgical */
+.ns{background:var(--c-deep);color:#fff;position:relative;overflow:hidden}
+.ns>.ph{position:absolute;inset:0;background:#2a444d;opacity:.6}
+.ns .wrap{position:relative}
+.ns h2{color:#fff}.ns .sub{color:rgba(255,255,255,.75)}
+.ns .box{background:#fff;color:var(--c-ink);margin-top:56px;padding:60px;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.pt{display:inline-block;background:var(--c-teal);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;letter-spacing:.05em}
+.ns h3{font-size:27px;font-weight:400;margin:10px 0 14px}
+.ns h3 b{font-weight:700}
+.ns .box p{font-size:15px;color:var(--c-mute);line-height:1.9}
+.ns .p2{margin-top:44px}
+.kw{display:flex;gap:16px;margin-top:40px;font-size:13px;color:var(--c-mute);text-align:center}
+.kw b{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--c-teal-soft);color:var(--c-teal);font-size:16px;margin:0 auto 8px}
+.ns .fig img{width:100%}
+
+/* steps */
+.steps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px}
+.step{border-top:4px solid var(--c-teal);background:var(--c-bg);padding:28px 26px 32px}
+.step .n{font-size:13px;color:var(--c-teal);font-weight:700;letter-spacing:.1em}
+.step h3{font-size:20px;margin:6px 0 12px}
+.step p{font-size:14px;color:var(--c-mute);line-height:1.8}
+
+/* tour */
+.tour{background:var(--c-deep);color:#fff}
+.tour h2{color:#fff}.tour .sub{color:rgba(255,255,255,.75)}
+.tour .main{height:520px;margin-top:50px;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:12px}
+.thumbs .ph{height:110px;cursor:pointer;opacity:.85}
+.thumbs .ph:hover{opacity:1}
+
+/* location */
+.loc{padding-bottom:0}
+.loc .split{display:grid;grid-template-columns:1fr 1fr;margin-top:50px}
+.loc .map{height:420px}
+.loc .info{background:#3b3f41;color:#fff;padding:60px 70px}
+.loc .tel{font-size:32px;font-weight:700;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:24px}
+.loc .addr{font-size:15px;margin-bottom:14px}
+.hours{font-size:15px}
+.hours li{display:grid;grid-template-columns:90px 1fr;gap:12px}
+.hours b{font-weight:600}
+.hours em{font-style:normal;color:#aab;font-size:13px}
+.loc .note{margin-top:18px;font-size:13px;color:#8fd0d6}
+
+footer{background:var(--c-footer);color:#a9adb0;font-size:12px;padding:30px 0 40px}
+footer .links{display:flex;gap:30px;font-weight:600;color:#fff;font-size:13px;margin-bottom:24px}
+footer p{line-height:1.9}
+footer .copy{margin-top:14px;opacity:.6}
+
+@media(max-width:1024px){
+  :root{--sec:80px}
+  h2{font-size:28px}
+  .quick{display:none}
+  .clinics{grid-template-columns:repeat(2,1fr)}
+  .doctor .wrap{grid-template-columns:1fr;gap:0}
+  .doctor .photo{height:380px;width:280px;margin:0 auto}
+  .doctor .info{padding:60px 0 40px}
+  .panel{grid-template-columns:1fr;padding:36px 28px}
+  .panel .fig{height:340px}
+  .ns .box{grid-template-columns:1fr;padding:36px 28px}
+  .steps .grid{grid-template-columns:repeat(2,1fr)}
+  .card{flex-basis:calc((100% - 20px)/2)}
+  .loc .split{grid-template-columns:1fr}
+  .loc .info{padding:40px 28px}
+  .thumbs{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:640px){
+  :root{--sec:64px}
+  body{font-size:15px;padding-bottom:60px}
+  .wrap{padding:0 20px}
+  h2{font-size:24px}.sub{font-size:15px}
+  nav ul{display:none}
+  .ham{display:block;position:absolute;right:20px;top:22px;width:26px;height:18px;border-top:2px solid var(--c-deep);border-bottom:2px solid var(--c-deep)}
+  .ham::after{content:"";position:absolute;left:0;right:0;top:6px;border-top:2px solid var(--c-deep)}
+  .hero{height:440px}.hero h1{font-size:28px}.hero p{font-size:15px}
+  .clinics{gap:24px 16px}.clinics .ic{width:84px;height:84px}
+  .surg .grid{grid-template-columns:1fr}
+  .panel h3,.ns h3{font-size:22px}
+  .two{grid-template-columns:1fr}
+  .tx{flex-wrap:wrap;gap:16px}
+  .card{flex-basis:84%}
+  .steps .grid{grid-template-columns:1fr}
+  .tour .main{height:240px}
+  .thumbs .ph{height:70px}
+  .loc .tel{font-size:26px}
+  footer .links{gap:16px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--c-teal);color:#fff;font-size:13px;font-weight:600;text-align:center}
+  .mbar a{padding:16px 0;border-right:1px solid rgba(255,255,255,.25)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap" style="position:relative">
+    <a class="logo" href="#"><span class="mark">OO</span><span class="name">[병원명]정형외과의원<small>ORTHOPEDICS</small></span></a>
+    <span class="ham" aria-label="메뉴"></span>
+    <nav><ul>
+      <li><a href="#about">병원소개</a></li><li><a href="#doctor">의료진소개</a></li><li><a href="#clinic">척추·관절 클리닉</a></li>
+      <li><a href="#ns">비수술 클리닉</a></li><li><a href="#steps">도수·운동 클리닉</a></li><li><a href="#tour">병원 둘러보기</a></li><li><a href="#loc">오시는길</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<aside class="quick">
+  <a href="#loc"><b></b>오시는길</a>
+  <a href="#"><b></b>블로그</a>
+  <a href="#"><b></b>예약</a>
+  <a class="top" href="#">TOP ▲</a>
+</aside>
+<nav class="mbar"><a href="tel:0000000000">전화</a><a href="#loc">길찾기</a><a href="#">예약</a></nav>
+
+<!-- 1. 히어로 -->
+<section class="hero" id="about">
+  <div class="ph" data-name="hero.jpg"></div>
+  <div class="txt">
+    <span class="kicker" style="color:#9fd6dc">[병원명] ORTHOPEDICS</span>
+    <h1>내 가족을 진료한다는 마음으로,<br><span class="thin">꼭 필요한 치료만 권합니다.</span></h1>
+    <p>정형외과 전문의가 직접 진단하고, 직접 설명합니다.</p>
+  </div>
+</section>
+
+<!-- 2. 4대 클리닉 -->
+<section>
+  <div class="wrap">
+    <h2>정형외과 전문의가 <span class="thin">처음부터 끝까지 진료합니다.</span></h2>
+    <p class="sub">진단·치료·재활을 한 곳에서. 과잉 진료 없이 환자마다 다른 치료 계획을 세웁니다.</p>
+    <div class="clinics">
+      <a href="#clinic"><div class="ic"><img src="assets/svg/icon-spine.svg" alt=""></div><h3>척추클리닉</h3><p>목·허리 디스크, 척추관협착증,<br>일자목·거북목, 척추압박골절,<br>수술 후 통증</p></a>
+      <a href="#clinic"><div class="ic"><img src="assets/svg/icon-joint.svg" alt=""></div><h3>관절클리닉</h3><p>퇴행성 관절염, 어깨 회전근개·오십견,<br>테니스엘보·골프엘보,<br>손목·발목 통증</p></a>
+      <a href="#ns"><div class="ic"><img src="assets/svg/icon-injection.svg" alt=""></div><h3>비수술클리닉</h3><p>신경차단술, 인대강화 주사,<br>DNA 주사, 체외충격파,<br>연골재생 치료</p></a>
+      <a href="#steps"><div class="ic"><img src="assets/svg/icon-manual.svg" alt=""></div><h3>도수·운동클리닉</h3><p>만성통증 도수치료, 근막 이완,<br>체형교정, 1:1 맞춤 운동치료</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 대표원장 -->
+<section class="doctor" id="doctor">
+  <div class="ph" data-name="doctor-bg.jpg"></div>
+  <div class="wrap">
+    <div class="photo ph" data-name="doctor-main.png">원장 사진</div>
+    <div class="info">
+      <h2>대학병원에서 쌓은 경험을,<br><span class="thin">동네에서 편하게.</span></h2>
+      <p class="nm">[원장 성명]<span>대표원장</span></p>
+      <ul class="cols">
+        <li>[ ]대학교병원 정형외과 전문의</li><li>대한정형외과학회 정회원</li>
+        <li>[ ]대학교병원 관절센터 전임의</li><li>대한슬관절학회 정회원</li>
+        <li>[ ]대학교 의과대학 외래교수 역임</li><li>대한견주관절학회 정회원</li>
+        <li>[ ]병원 정형외과 과장 역임</li><li>대한척추외과학회 · 대한스포츠의학회 정회원</li>
+      </ul>
+      <ul class="cols en">
+        <li>[AO Trauma Course 수료]</li><li>[AO Arthroplasty Course 수료]</li><li>[관절경 Cadaver Workshop 수료]</li><li>[근막통증 유발점 교육 이수]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 수술 경험 -->
+<section class="surg">
+  <div class="wrap">
+    <h2>수술을 많이 해본 전문의라서,<br><span class="thin">수술 없이 낫는 길도 압니다.</span></h2>
+    <p class="sub">수술이 꼭 필요한 경우와 아닌 경우를 구분하는 것이 진료의 시작입니다.</p>
+    <div class="grid">
+      <div class="ph" data-name="surgery-1.jpg"></div><div class="ph" data-name="surgery-2.jpg"></div><div class="ph" data-name="surgery-3.jpg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 척추·관절 클리닉 탭 -->
+<section class="sj" id="clinic">
+  <div class="wrap">
+    <h2>정밀 진단 후, 필요한 치료만.<br><span class="thin" style="color:var(--c-teal)">척추 · 관절 클리닉</span></h2>
+    <p class="sub">엑스레이·초음파로 원인을 먼저 확인하고, 환자별로 치료 순서를 정합니다.</p>
+    <div class="tabs"><button class="btn on" data-tab="spine">척추클리닉 +</button><button class="btn" data-tab="joint">관절클리닉 +</button></div>
+
+    <div class="panel on" id="spine">
+      <div>
+        <h3><b>척추 질환</b>은 대부분 만성적이며,<br><b>반복되는 자세 습관</b>에서 시작됩니다.</h3>
+        <p class="body">척추 질환은 나이 든 분들의 병으로 여겨지지만, 오래 앉아 일하는 젊은 층에서도 빠르게 늘고 있습니다. 통증이 있을 때 치료하는 것만큼, 척추에 무리를 주지 않는 자세와 생활습관을 익히는 것이 재발을 막는 데 중요합니다. 초기에 정확히 검사하고 단계에 맞는 치료를 받으면 대부분 수술 없이 관리할 수 있습니다.</p>
+        <span class="tag">척추질환의 종류</span>
+        <ul class="two"><li>목·허리 디스크</li><li>일자목·거북목</li><li>척추관협착증, 척추측만증</li><li>수술 후 통증</li><li>척추압박골절</li><li>신경성 두통</li></ul>
+        <span class="tag">척추질환에 적용되는 비수술치료</span>
+        <ul class="tx">
+          <li><i><img src="assets/svg/icon-injection.svg" alt=""></i>체외충격파</li><li><i><img src="assets/svg/icon-spine.svg" alt=""></i>신경차단술</li>
+          <li><i><img src="assets/svg/icon-injection.svg" alt=""></i>인대강화 주사</li><li><i><img src="assets/svg/icon-manual.svg" alt=""></i>도수·체형교정</li>
+        </ul>
+      </div>
+      <div class="fig"><img src="assets/svg/spine.svg" alt="척추 일러스트"></div>
+    </div>
+
+    <div class="panel" id="joint">
+      <div>
+        <h3><b>관절</b>은 한 번 닳으면 되돌리기 어렵습니다.<br><b>늦기 전에 지키는 치료</b>를 합니다.</h3>
+        <p class="body">무릎·어깨·손목·발목 관절은 매일 쓰는 만큼 손상도 빠릅니다. 통증을 참고 지내다 보면 연골 손상이 진행되어 치료 선택지가 줄어듭니다. 초음파로 인대·힘줄 상태를 확인하고, 주사·충격파·운동치료를 조합해 관절 기능을 최대한 보존합니다.</p>
+        <span class="tag">관절질환의 종류</span>
+        <ul class="two"><li>퇴행성 관절염</li><li>손목터널증후군</li><li>어깨 회전근개 파열·오십견</li><li>발목 염좌·족저근막염</li><li>테니스엘보·골프엘보</li><li>무릎 연골·인대 손상</li></ul>
+        <span class="tag">관절질환에 적용되는 비수술치료</span>
+        <ul class="tx">
+          <li><i><img src="assets/svg/icon-injection.svg" alt=""></i>연골주사</li><li><i><img src="assets/svg/icon-injection.svg" alt=""></i>프롤로·DNA 주사</li>
+          <li><i><img src="assets/svg/icon-joint.svg" alt=""></i>체외충격파</li><li><i><img src="assets/svg/icon-manual.svg" alt=""></i>도수·운동치료</li>
+        </ul>
+      </div>
+      <div class="fig"><img src="assets/svg/knee.svg" alt="무릎 관절 일러스트"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 척추·디스크 카드 -->
+<section class="disc">
+  <div class="wrap">
+    <span class="lbl">수술을 권유받으셨나요?</span>
+    <h2>척추 · 디스크 <span style="color:var(--c-teal)">클리닉</span></h2>
+    <p class="sub">척추·디스크 질환의 상당수는 수술 없이 호전됩니다. 정확한 진단 후 보존적 치료로 충분히 나아질 수 있는 경우, 불필요한 수술을 권하지 않습니다.</p>
+    <div class="slider">
+      <div class="track">
+        <div class="card"><div class="im"><img src="assets/svg/disc.svg" alt=""></div><div class="tt"><h3>허리·목 디스크</h3><p>튀어나온 디스크가 신경을 눌러 생기는 통증·저림</p></div></div>
+        <div class="card"><div class="im"><img src="assets/svg/scoliosis.svg" alt=""></div><div class="tt"><h3>척추측만증</h3><p>척추가 옆으로 휘어 자세·통증 문제가 생기는 질환</p></div></div>
+        <div class="card"><div class="im"><img src="assets/svg/stenosis.svg" alt=""></div><div class="tt"><h3>척추관협착증</h3><p>신경이 지나는 통로가 좁아져 오래 걷기 힘든 증상</p></div></div>
+        <div class="card"><div class="im"><img src="assets/svg/disc.svg" alt=""></div><div class="tt"><h3>척추압박골절</h3><p>골다공증 등으로 척추뼈가 내려앉는 골절</p></div></div>
+        <div class="card"><div class="im"><img src="assets/svg/scoliosis.svg" alt=""></div><div class="tt"><h3>일자목·거북목</h3><p>목 곡선이 사라져 생기는 두통·어깨 결림</p></div></div>
+      </div>
+      <button class="arr l" aria-label="이전">‹</button><button class="arr r" aria-label="다음">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 비수술 클리닉 -->
+<section class="ns" id="ns">
+  <div class="ph" data-name="nonsurgical-bg.jpg"></div>
+  <div class="wrap">
+    <h2>[병원명]의 비수술 클리닉</h2>
+    <p class="sub">정형외과 전문의의 재생 치료로 환자별 최적의 회복을 돕습니다.</p>
+    <div class="box">
+      <div>
+        <span class="pt">POINT 1</span>
+        <h3>통증을 잠시 가리는 치료가 <b>아닙니다.</b></h3>
+        <p>손상된 인대·근육·힘줄 조직의 재생을 돕는 근본 치료를 합니다. 최근 젊은 층에서도 늘고 있는 다양한 관절 질환에 맞춰 치료법을 제안합니다.</p>
+        <div class="p2"><span class="pt">POINT 2</span>
+        <h3>스테로이드 주사가 <b>아닙니다.</b></h3>
+        <p>인체에 부담이 적은 성분을 사용해 임산부·고령·기저질환 환자도 상담 후 치료할 수 있습니다.</p></div>
+        <ul class="kw">
+          <li><b>정확</b>통증 부위<br>전문의 1:1 진단</li><li><b>정밀</b>개인 맞춤<br>치료 설계</li><li><b>회복</b>통증 개선<br>인대 강화</li><li><b>안전</b>신체 스스로의<br>재생을 돕는 치료</li>
+        </ul>
+      </div>
+      <div class="fig"><img src="assets/svg/knee-injection.svg" alt="무릎 주사 치료 일러스트"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 도수치료 STEP -->
+<section class="steps" id="steps">
+  <div class="wrap">
+    <h2>도수·운동치료는 <span class="thin">이렇게 진행됩니다.</span></h2>
+    <div class="grid">
+      <div class="step"><span class="n">STEP 01</span><h3>진단</h3><p>정형외과 전문의가 진단 후 도수치료 필요 여부를 결정하고, 신체 기능을 평가합니다.</p></div>
+      <div class="step"><span class="n">STEP 02</span><h3>계획</h3><p>검사 결과를 바탕으로 치료 목표를 정하고, 전문 치료사와 1:1 맞춤 도수치료를 시작합니다.</p></div>
+      <div class="step"><span class="n">STEP 03</span><h3>재평가</h3><p>치료 경과를 주기적으로 확인하고, 호전 정도에 따라 치료 강도와 계획을 조정합니다.</p></div>
+      <div class="step"><span class="n">STEP 04</span><h3>자가관리</h3><p>재발을 막기 위해 집에서 할 수 있는 근력 운동과 자세 교정법을 알려드립니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 병원 둘러보기 -->
+<section class="tour" id="tour">
+  <div class="wrap">
+    <h2>병원 둘러보기</h2>
+    <p class="sub">대기 공간부터 치료실까지, 편하게 진료받으실 수 있도록 준비했습니다.</p>
+    <div class="main ph" data-name="tour-main.jpg">로비 대표 사진</div>
+    <div class="thumbs">
+      <div class="ph" data-name="tour-1.jpg"></div><div class="ph" data-name="tour-2.jpg"></div><div class="ph" data-name="tour-3.jpg"></div>
+      <div class="ph" data-name="tour-4.jpg"></div><div class="ph" data-name="tour-5.jpg"></div><div class="ph" data-name="tour-6.jpg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 진료안내 & 오시는길 -->
+<section class="loc" id="loc">
+  <div class="wrap"><h2>진료안내 &amp; 오시는길</h2></div>
+  <div class="split">
+    <div class="map ph" data-name="kakao-map">카카오맵 (개발 시 SDK 삽입)</div>
+    <div class="info">
+      <div class="tel">☎ 000.000.0000</div>
+      <p class="addr">📍 [도로명 주소, 층]</p>
+      <ul class="hours">
+        <li><b>평 일</b><span>AM 08:30 ~ PM 18:30</span></li>
+        <li><b>점심시간</b><span>PM 01:00 ~ PM 02:00</span></li>
+        <li><b>토요일</b><span>AM 08:30 ~ PM 13:30 <em>(점심시간 없음)</em></span></li>
+      </ul>
+      <p class="note">* 일요일·공휴일 휴진 &nbsp;&nbsp; * 주차: [건물 지하주차장 무료]</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links"><a href="#">병원소개</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a></div>
+    <p>[도로명 주소, 층]<br>대표자 : [성명] &nbsp; 사업자등록번호 : [000-00-00000] &nbsp; 전화 : [000-000-0000] &nbsp; 팩스 : [000-000-0000]</p>
+    <p class="copy">Copyright © [병원명]정형외과의원. All rights reserved. Made by 에이치코</p>
+  </div>
+</footer>
+
+<script>
+// 탭
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');document.getElementById(b.dataset.tab).classList.add('on');
+}));
+// 카드 슬라이드
+(()=>{const t=document.querySelector('.track'),cards=t.children,n=cards.length;let i=0;
+const per=()=>innerWidth<=640?1:innerWidth<=1024?2:3;
+const go=d=>{i=Math.max(0,Math.min(n-per(),i+d));const w=cards[0].getBoundingClientRect().width+20;t.style.transform=`translateX(-${i*w}px)`};
+document.querySelector('.arr.l').onclick=()=>go(-1);document.querySelector('.arr.r').onclick=()=>go(1);
+let sx=0;t.addEventListener('pointerdown',e=>sx=e.clientX);t.addEventListener('pointerup',e=>{const d=e.clientX-sx;if(Math.abs(d)>40)go(d<0?1:-1)});
+addEventListener('resize',()=>go(0));})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" fill="none" stroke="#3A9AA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs><style>.f{fill:#E6F2F3}.w{fill:#fff}.c{fill:#3A9AA3;opacity:.45;stroke:none}.hl{fill:#F4B183;stroke:#E28A55}</style></defs>
+  <path d="M132 20h56l4 150c22 6 40 24 44 46-10 14-30 22-48 20-8 10-20 14-28 14s-20-4-28-14c-18 2-38-6-48-20 4-22 22-40 44-46l4-150z" class="w"/>
+  <path d="M112 288c14-10 82-10 96 0l-6 172h-84l-6-172z" class="w"/>
+  <path d="M112 262c14-12 82-12 96 0 6 10 6 20 0 26-14 10-82 10-96 0-6-6-6-16 0-26z" class="c"/>
+  <path d="M106 248c-6 20-4 40 0 60M214 248c6 20 4 40 0 60"/>
+  <ellipse cx="160" cy="230" rx="24" ry="30" class="f"/>
+  <!-- 염증/통증 부위 -->
+  <circle cx="204" cy="272" r="14" class="hl"/>
+  <!-- 주사기 -->
+  <g transform="rotate(-35 300 330)">
+    <rect x="270" y="322" width="120" height="16" rx="3" class="w"/>
+    <rect x="270" y="322" width="70" height="16" rx="3" class="f"/>
+    <rect x="386" y="318" width="14" height="24" rx="2" class="w"/>
+    <line x1="400" y1="330" x2="440" y2="330" stroke-width="3"/>
+    <line x1="270" y1="330" x2="222" y2="330"/>
+    <line x1="220" y1="326" x2="220" y2="334"/>
+    <g stroke="#C9D2D6"><line x1="290" y1="326" x2="290" y2="334"/><line x1="310" y1="326" x2="310" y2="334"/><line x1="330" y1="326" x2="330" y2="334"/><line x1="350" y1="326" x2="350" y2="334"/></g>
+  </g>
+  <g font-family="Pretendard, sans-serif" font-size="12" fill="#6B7378" stroke="none">
+    <text x="24" y="276">손상 조직에</text><text x="24" y="292">직접 주입</text>
+  </g>
+</svg>

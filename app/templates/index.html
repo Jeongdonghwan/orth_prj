@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ph, img, svg, clinics_grid, doctor_section, surgery_section, clinic_tabs, spine_panel, joint_panel, ns_points, steps_cards, disc_section, tour_grid, loc_split with context %}
+
+{% block content %}
+<!-- 1. 히어로 슬라이더 -->
+<section class="hero" id="about">
+  <div class="slides" aria-hidden="true">
+    <div class="slide on"><picture>
+      <source media="(max-width:640px)" srcset="{{ url_for('static', filename='img/hero-m.jpg') }}">
+      <img src="{{ url_for('static', filename='img/hero.jpg') }}" alt="" width="1600" height="900" fetchpriority="high">
+    </picture></div>
+    <div class="slide"><img data-src="{{ url_for('static', filename='img/hero-2.jpg') }}" data-src-m="{{ url_for('static', filename='img/hero-2-m.jpg') }}" alt="" width="1600" height="900"></div>
+    <div class="slide"><img data-src="{{ url_for('static', filename='img/hero-3.jpg') }}" data-src-m="{{ url_for('static', filename='img/hero-3-m.jpg') }}" alt="" width="1600" height="900"></div>
+  </div>
+  <div class="txt">
+    <span class="kicker">{{ clinic.en }}</span>
+    <h1>내 가족을 진료한다는 마음으로,<br><span class="thin">꼭 필요한 치료만 권합니다.</span></h1>
+    <p>정형외과 전문의가 직접 진단하고, 직접 설명합니다.</p>
+    <div class="acts">
+      <a class="btn" href="{{ url_for('pages.clinic', tab='spine') }}">클리닉 안내</a>
+      <a class="btn ghost" href="#loc">진료시간 · 오시는길</a>
+    </div>
+  </div>
+  <div class="dots" aria-label="슬라이드 선택"></div>
+  <a class="scroll-hint" href="#clinics">SCROLL</a>
+</section>
+
+<!-- 2. 4대 클리닉 -->
+<section id="clinics">
+  <div class="wrap">
+    <span class="kicker">CLINIC</span>
+    <h2>정형외과 전문의가 <span class="thin">처음부터 끝까지 진료합니다.</span></h2>
+    <p class="sub">진단·치료·재활을 한 곳에서. 과잉 진료 없이 환자마다 다른 치료 계획을 세웁니다.</p>
+    {{ clinics_grid(inpage=True) }}
+  </div>
+</section>
+
+<!-- 3. 대표원장 -->
+{{ doctor_section() }}
+
+<!-- 4. 수술 경험 -->
+{{ surgery_section() }}
+
+<!-- 5. 척추·관절 클리닉 탭 -->
+<section class="sj" id="clinic">
+  <div class="wrap">
+    <span class="kicker">SPINE · JOINT</span>
+    <h2>정밀 진단 후, 필요한 치료만.<br><span class="thin" style="color:var(--c-blue)">척추 · 관절 클리닉</span></h2>
+    <p class="sub">엑스레이·초음파로 원인을 먼저 확인하고, 환자별로 치료 순서를 정합니다.</p>
+    {{ clinic_tabs([('spine', '척추클리닉 +'), ('joint', '관절클리닉 +')], 'spine') }}
+    {{ spine_panel(True) }}
+    {{ joint_panel(False) }}
+  </div>
+</section>
+
+<!-- 6. 척추·디스크 카드 -->
+{{ disc_section() }}
+
+<!-- 7. 비수술 클리닉 -->
+<section class="ns" id="ns">
+  {{ ph('nonsurgical-bg.jpg') }}
+  <div class="wrap">
+    <span class="kicker" style="color:#9CC9F5">NON-SURGICAL</span>
+    <h2>{{ clinic.short }}의 비수술 클리닉</h2>
+    <p class="sub">정형외과 전문의의 재생 치료로 환자별 최적의 회복을 돕습니다.</p>
+    <div class="box">
+      {{ ns_points() }}
+    </div>
+  </div>
+</section>
+
+<!-- 8. 도수치료 STEP -->
+<section class="steps" id="steps">
+  <div class="wrap">
+    <span class="kicker">MANUAL THERAPY</span>
+    <h2>도수·운동치료는 <span class="thin">이렇게 진행됩니다.</span></h2>
+    <div class="grid">
+      {{ steps_cards() }}
+    </div>
+  </div>
+</section>
+
+<!-- 9. 병원 둘러보기 -->
+<section class="tour" id="tour">
+  <div class="wrap">
+    <span class="kicker" style="color:#9CC9F5">INTERIOR</span>
+    <h2>병원 둘러보기</h2>
+    <p class="sub">대기 공간부터 치료실까지, 편하게 진료받으실 수 있도록 준비했습니다.</p>
+    {{ tour_grid() }}
+  </div>
+</section>
+
+<!-- 10. 진료안내 & 오시는길 -->
+<section class="loc" id="loc">
+  <div class="wrap"><span class="kicker">LOCATION</span><h2>진료안내 &amp; 오시는길</h2></div>
+  {{ loc_split() }}
+</section>
+{% endblock %}
