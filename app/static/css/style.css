@@ -323,10 +323,11 @@ footer .copy{margin-top:14px;opacity:.55}
   .wrap{padding:0 20px}
   h2{font-size:25px}.sub{font-size:15px}
   nav ul{display:none}
-  .logo{justify-content:flex-start;padding:14px 0}
-  .logo img{height:42px}
-  body.scrolled .logo img{height:36px}
-  .logo .name{font-size:18px}
+  .logo{justify-content:flex-start;padding:14px 0;max-width:calc(100% - 56px);gap:10px}
+  .logo img{height:40px}
+  body.scrolled .logo img{height:34px}
+  .logo .name{font-size:16px;white-space:nowrap}
+  .logo .name small{font-size:9px;letter-spacing:.14em}
   .ham{display:block;position:absolute;right:16px;top:13px;width:44px;height:44px;border:0;background:linear-gradient(var(--c-navy),var(--c-navy)) 9px 21px/26px 2px no-repeat;cursor:pointer;padding:0}
   .ham::before,.ham::after{content:"";position:absolute;left:9px;width:26px;height:2px;top:13px;background:var(--c-navy);transition:.3s}
   .ham::after{top:29px}

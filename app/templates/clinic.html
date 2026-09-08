@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "_macros.html" import page_band, clinic_tabs, spine_panel, joint_panel, ns_points, steps_cards, disc_section with context %}
 {% set TAB_NAMES = {'spine': '척추클리닉', 'joint': '관절클리닉', 'nonsurgical': '비수술클리닉', 'manual': '도수·운동클리닉'} %}
-{% block title %}{{ TAB_NAMES[active_tab] }} — {{ clinic.name }} {{ clinic.region }} 마취통증의학과{% endblock %}
+{% block title %}{{ TAB_NAMES[active_tab] }} — {{ clinic.name }} {{ clinic.region }}{% endblock %}
 {% block description %}{{ clinic.region }} {{ clinic.name }} {{ TAB_NAMES[active_tab] }}. 정밀 진단 후 필요한 치료만. 척추·관절, 비수술 재생치료, 도수·운동치료.{% endblock %}
 
 {% block content %}
