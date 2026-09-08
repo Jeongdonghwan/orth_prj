@@ -1,11 +1,11 @@
 [Unit]
-Description=ortho Flask (gunicorn :8031)
+Description=ortho Flask (gunicorn :8036)
 After=network.target mariadb.service
 
 [Service]
 WorkingDirectory=/var/www/ortho
 EnvironmentFile=/var/www/ortho/.env
-ExecStart=/var/www/ortho/venv/bin/gunicorn -w 2 -b 127.0.0.1:8031 --access-logfile - --error-logfile - wsgi:app
+ExecStart=/var/www/ortho/venv/bin/gunicorn -w 2 -b 0.0.0.0:8036 --access-logfile - --error-logfile - wsgi:app
 Restart=always
 RestartSec=3
 
