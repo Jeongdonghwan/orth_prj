@@ -48,7 +48,7 @@ curl -s http://127.0.0.1:8037/robots.txt
 ufw status | head -1
 ```
 
-기대 출력: `active (running)` / `<title>운남튼튼정형외과의원 …</title>` / `admin:401` / robots 내용.
+기대 출력: `active (running)` / `<title>운남튼튼마취통증의학과 …</title>` / `admin:401` / robots 내용.
 `ufw` 가 active 면 `ufw allow 8037/tcp`. 실패 시 `journalctl -u ortho -n 30 --no-pager`.
 
 ## 4. 도메인 연결 (도메인 확정 후)

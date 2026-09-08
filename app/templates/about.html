@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "_macros.html" import ph, page_band, clinics_grid, surgery_section, tour_grid with context %}
-{% block title %}병원소개 — {{ clinic.name }} {{ clinic.region }} 정형외과{% endblock %}
-{% block description %}{{ clinic.region }} {{ clinic.name }} 병원소개. 정형외과 전문의가 진단·치료·재활을 한 곳에서 진료하며, 대기 공간부터 치료실까지 병원 둘러보기.{% endblock %}
+{% block title %}병원소개 — {{ clinic.name }} {{ clinic.region }} 마취통증의학과{% endblock %}
+{% block description %}{{ clinic.region }} {{ clinic.name }} 병원소개. 마취통증의학과 전문의가 진단·치료·재활을 한 곳에서 진료하며, 대기 공간부터 치료실까지 병원 둘러보기.{% endblock %}
 
 {% block content %}
 {{ page_band('병원소개', [('병원소개', None)]) }}
@@ -14,7 +14,7 @@
     <div class="greet">
       {{ ph('about-greeting.jpg', '', '', clinic.name ~ ' 진료실', True, 1200, 800) }}
       <div>
-        <h3>정형외과 전문의가 <b>직접 진단하고, 직접 설명합니다.</b></h3>
+        <h3>마취통증의학과 전문의가 <b>직접 진단하고, 직접 설명합니다.</b></h3>
         <p>진단·치료·재활을 한 곳에서 진행합니다. 과잉 진료 없이 환자마다 다른 치료 계획을 세우고, 엑스레이·초음파로 원인을 먼저 확인한 뒤 환자별로 치료 순서를 정합니다.</p>
         <p>수술이 꼭 필요한 경우와 아닌 경우를 구분하는 것이 진료의 시작입니다. 정확한 진단 후 보존적 치료로 충분히 나아질 수 있는 경우, 불필요한 수술을 권하지 않습니다.</p>
         <p>대기 공간부터 치료실까지, 편하게 진료받으실 수 있도록 준비했습니다. 통증이 있을 때 치료하는 것만큼 재발을 막는 자세와 생활습관까지 함께 안내하겠습니다.</p>
@@ -27,7 +27,7 @@
 <!-- 4대 클리닉 -->
 <section class="sj">
   <div class="wrap">
-    <h2>정형외과 전문의가 <span class="thin">처음부터 끝까지 진료합니다.</span></h2>
+    <h2>마취통증의학과 전문의가 <span class="thin">처음부터 끝까지 진료합니다.</span></h2>
     <p class="sub">진단·치료·재활을 한 곳에서. 과잉 진료 없이 환자마다 다른 치료 계획을 세웁니다.</p>
     {{ clinics_grid(inpage=False) }}
   </div>

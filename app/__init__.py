@@ -45,7 +45,7 @@ def create_app(config_object=Config):
                 "name": c["name"],
                 "url": app.config.get("SITE_URL", ""),
                 "telephone": c["tel_link"],
-                "medicalSpecialty": "Orthopedic",
+                "medicalSpecialty": "Anesthesia",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": c["address_road"],

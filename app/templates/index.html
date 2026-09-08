@@ -15,7 +15,7 @@
   <div class="txt">
     <span class="kicker">{{ clinic.en }}</span>
     <h1>내 가족을 진료한다는 마음으로,<br><span class="thin">꼭 필요한 치료만 권합니다.</span></h1>
-    <p>정형외과 전문의가 직접 진단하고, 직접 설명합니다.</p>
+    <p>마취통증의학과 전문의가 직접 진단하고, 직접 설명합니다.</p>
     <div class="acts">
       <a class="btn" href="{{ url_for('pages.clinic', tab='spine') }}">클리닉 안내</a>
       <a class="btn ghost" href="#loc">진료시간 · 오시는길</a>
@@ -29,7 +29,7 @@
 <section id="clinics">
   <div class="wrap">
     <span class="kicker">CLINIC</span>
-    <h2>정형외과 전문의가 <span class="thin">처음부터 끝까지 진료합니다.</span></h2>
+    <h2>마취통증의학과 전문의가 <span class="thin">처음부터 끝까지 진료합니다.</span></h2>
     <p class="sub">진단·치료·재활을 한 곳에서. 과잉 진료 없이 환자마다 다른 치료 계획을 세웁니다.</p>
     {{ clinics_grid(inpage=True) }}
   </div>
@@ -62,7 +62,7 @@
   <div class="wrap">
     <span class="kicker" style="color:#9CC9F5">NON-SURGICAL</span>
     <h2>{{ clinic.short }}의 비수술 클리닉</h2>
-    <p class="sub">정형외과 전문의의 재생 치료로 환자별 최적의 회복을 돕습니다.</p>
+    <p class="sub">마취통증의학과 전문의의 재생 치료로 환자별 최적의 회복을 돕습니다.</p>
     <div class="box">
       {{ ns_points() }}
     </div>
