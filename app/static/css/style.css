@@ -131,7 +131,11 @@ nav ul a:hover::after{transform:scaleX(1)}
 
 /* ==== 수술 경험 ==== */
 .surg .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.surg figure{margin:0}
 .surg .ph{height:250px;border-radius:var(--r);box-shadow:var(--sh)}
+.surg figcaption{padding:18px 6px 0}
+.surg figcaption h3{font-size:18px;color:var(--c-navy);margin-bottom:6px}
+.surg figcaption p{font-size:14px;color:var(--c-mute);line-height:1.7}
 .surg .ph:hover>img{transform:scale(1.06)}
 
 /* ==== 척추·관절 탭 ==== */

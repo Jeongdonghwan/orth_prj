@@ -10,7 +10,7 @@
 <section class="sj" id="clinic">
   <div class="wrap">
     <h2>정밀 진단 후, 필요한 치료만.<br><span class="thin" style="color:var(--c-teal)">{{ TAB_NAMES[active_tab] }}</span></h2>
-    <p class="sub">엑스레이·초음파로 원인을 먼저 확인하고, 환자별로 치료 순서를 정합니다.</p>
+    <p class="sub">X-ray·초음파·C-arm으로 원인을 먼저 확인하고, 환자별로 치료 순서를 정합니다.</p>
     {{ clinic_tabs([('spine', '척추클리닉 +'), ('joint', '관절클리닉 +'), ('nonsurgical', '비수술클리닉 +'), ('manual', '도수·운동클리닉 +')], active_tab) }}
 
     {{ spine_panel(active_tab == 'spine') }}

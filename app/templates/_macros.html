@@ -27,9 +27,9 @@
 {% set L = {'spine': '#clinic', 'joint': '#clinic', 'nonsurgical': '#ns', 'manual': '#steps'} if inpage else
            {'spine': url_for('pages.clinic', tab='spine'), 'joint': url_for('pages.clinic', tab='joint'), 'nonsurgical': url_for('pages.clinic', tab='nonsurgical'), 'manual': url_for('pages.clinic', tab='manual')} %}
 <div class="clinics">
-  <a href="{{ L.spine }}"><div class="ic"><img src="{{ svg('icon-spine') }}" alt="" width="54" height="54"></div><h3>척추클리닉</h3><p>목·허리 디스크, 척추관협착증,<br>일자목·거북목, 척추압박골절,<br>수술 후 통증</p></a>
-  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>퇴행성 관절염, 어깨 회전근개·오십견,<br>테니스엘보·골프엘보,<br>손목·발목 통증</p></a>
-  <a href="{{ L.nonsurgical }}"><div class="ic"><img src="{{ svg('icon-injection') }}" alt="" width="54" height="54"></div><h3>비수술클리닉</h3><p>신경차단술, 인대강화 주사,<br>DNA 주사, 체외충격파,<br>연골재생 치료</p></a>
+  <a href="{{ L.spine }}"><div class="ic"><img src="{{ svg('icon-spine') }}" alt="" width="54" height="54"></div><h3>척추클리닉</h3><p>목·허리 디스크, 척추관협착증,<br>일자목·거북목, 교통사고 후유증,<br>수술 후 통증</p></a>
+  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>무릎 관절염, 오십견·회전근개,<br>테니스엘보·골프엘보,<br>족저근막염·손목 통증</p></a>
+  <a href="{{ L.nonsurgical }}"><div class="ic"><img src="{{ svg('icon-injection') }}" alt="" width="54" height="54"></div><h3>비수술클리닉</h3><p>신경차단술, DNA 주사,<br>프롤로 주사, 체외충격파,<br>두통·대상포진 통증</p></a>
   <a href="{{ L.manual }}"><div class="ic"><img src="{{ svg('icon-manual') }}" alt="" width="54" height="54"></div><h3>도수·운동클리닉</h3><p>만성통증 도수치료, 근막 이완,<br>체형교정, 1:1 맞춤 운동치료</p></a>
 </div>
 {%- endmacro %}
@@ -48,14 +48,17 @@
 </section>
 {%- endmacro %}
 
-{# 수술 경험 섹션 #}
-{% macro surgery_section() -%}
+{# 의료장비·영상유도 치료 섹션 #}
+{% macro equip_section() -%}
 <section class="surg">
   <div class="wrap">
-    <h2>수술을 많이 해본 전문의라서,<br><span class="thin">수술 없이 낫는 길도 압니다.</span></h2>
-    <p class="sub">수술이 꼭 필요한 경우와 아닌 경우를 구분하는 것이 진료의 시작입니다.</p>
+    <span class="kicker">EQUIPMENT</span>
+    <h2>보이지 않는 통증을,<br><span class="thin">영상으로 보면서 치료합니다.</span></h2>
+    <p class="sub">C-arm·초음파·X-ray로 통증의 원인 부위를 확인하고, 실시간 영상을 보며 정확한 위치에 시술합니다.</p>
     <div class="grid">
-      {{ ph('surgery-1.jpg', '', '', '영상 판독', True, 1200, 800) }}{{ ph('surgery-2.jpg', '', '', '척추 영상 진단', True, 1200, 800) }}{{ ph('surgery-3.jpg', '', '', '수술실', True, 1200, 800) }}
+      <figure>{{ ph('equip-1.jpg', '', '', 'C-arm 시술실', True, 1200, 800) }}<figcaption><h3>C-arm 시술실</h3><p>신경차단술·DNA 주사 시 실시간 영상으로 바늘 위치를 확인합니다.</p></figcaption></figure>
+      <figure>{{ ph('equip-2.jpg', '', '', 'X-ray·골밀도 검사실', True, 1200, 800) }}<figcaption><h3>X-ray · 골밀도 검사실</h3><p>척추·관절 상태와 골밀도를 확인해 치료 계획의 기준을 잡습니다.</p></figcaption></figure>
+      <figure>{{ ph('equip-3.jpg', '', '', '물리·도수치료실', True, 1200, 800) }}<figcaption><h3>물리 · 도수치료실</h3><p>체외충격파와 물리치료, 1:1 도수치료를 한 공간에서 이어서 받습니다.</p></figcaption></figure>
     </div>
   </div>
 </section>
@@ -71,13 +74,13 @@
 <div class="panel{% if active %} on{% endif %}" id="spine">
   <div>
     <h3><b>척추 질환</b>은 대부분 만성적이며,<br><b>반복되는 자세 습관</b>에서 시작됩니다.</h3>
-    <p class="body">척추 질환은 나이 든 분들의 병으로 여겨지지만, 오래 앉아 일하는 젊은 층에서도 빠르게 늘고 있습니다. 통증이 있을 때 치료하는 것만큼, 척추에 무리를 주지 않는 자세와 생활습관을 익히는 것이 재발을 막는 데 중요합니다. 초기에 정확히 검사하고 단계에 맞는 치료를 받으면 대부분 수술 없이 관리할 수 있습니다.</p>
+    <p class="body">척추 질환은 나이 든 분들의 병으로 여겨지지만, 오래 앉아 일하는 젊은 층에서도 빠르게 늘고 있습니다. C-arm 영상을 보며 통증을 일으키는 신경 부위에 정확히 시술하는 신경차단술로 통증을 줄이고, 자세와 생활습관을 함께 교정해 재발을 막습니다. 초기에 정확히 검사하고 단계에 맞는 치료를 받으면 대부분 수술 없이 관리할 수 있습니다.</p>
     <span class="tag">척추질환의 종류</span>
-    <ul class="two"><li>목·허리 디스크</li><li>일자목·거북목</li><li>척추관협착증, 척추측만증</li><li>수술 후 통증</li><li>척추압박골절</li><li>신경성 두통</li></ul>
+    <ul class="two"><li>목·허리 디스크</li><li>일자목·거북목</li><li>척추관협착증</li><li>수술 후 통증</li><li>교통사고 후유증</li><li>긴장성 두통</li></ul>
     <span class="tag">척추질환에 적용되는 비수술치료</span>
     <ul class="tx">
       <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>체외충격파</li><li><i><img src="{{ svg('icon-spine') }}" alt="" width="30" height="30"></i>신경차단술</li>
-      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>인대강화 주사</li><li><i><img src="{{ svg('icon-manual') }}" alt="" width="30" height="30"></i>도수·체형교정</li>
+      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>DNA·프롤로 주사</li><li><i><img src="{{ svg('icon-manual') }}" alt="" width="30" height="30"></i>도수·체형교정</li>
     </ul>
   </div>
   {{ ph('fig-spine.jpg', '', 'fig', '척추 검진', True, 800, 940) }}
@@ -89,9 +92,9 @@
 <div class="panel{% if active %} on{% endif %}" id="joint">
   <div>
     <h3><b>관절</b>은 한 번 닳으면 되돌리기 어렵습니다.<br><b>늦기 전에 지키는 치료</b>를 합니다.</h3>
-    <p class="body">무릎·어깨·손목·발목 관절은 매일 쓰는 만큼 손상도 빠릅니다. 통증을 참고 지내다 보면 연골 손상이 진행되어 치료 선택지가 줄어듭니다. 초음파로 인대·힘줄 상태를 확인하고, 주사·충격파·운동치료를 조합해 관절 기능을 최대한 보존합니다.</p>
+    <p class="body">무릎·어깨·손목·발목 관절은 매일 쓰는 만큼 손상도 빠릅니다. 통증을 참고 지내다 보면 연골과 인대 손상이 진행되어 치료 선택지가 줄어듭니다. 초음파로 인대·힘줄 상태를 확인하고, DNA 주사·체외충격파·도수치료를 조합해 관절 기능을 최대한 보존합니다.</p>
     <span class="tag">관절질환의 종류</span>
-    <ul class="two"><li>퇴행성 관절염</li><li>손목터널증후군</li><li>어깨 회전근개 파열·오십견</li><li>발목 염좌·족저근막염</li><li>테니스엘보·골프엘보</li><li>무릎 연골·인대 손상</li></ul>
+    <ul class="two"><li>무릎 관절염</li><li>손목터널증후군</li><li>오십견·회전근개 손상</li><li>족저근막염·아킬레스건염</li><li>테니스엘보·골프엘보</li><li>어깨 석회화건염</li></ul>
     <span class="tag">관절질환에 적용되는 비수술치료</span>
     <ul class="tx">
       <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>연골주사</li><li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>프롤로·DNA 주사</li>
@@ -107,12 +110,12 @@
 <div>
   <span class="pt">POINT 1</span>
   <h3>통증을 잠시 가리는 치료가 <b>아닙니다.</b></h3>
-  <p>손상된 인대·근육·힘줄 조직의 재생을 돕는 근본 치료를 합니다. 최근 젊은 층에서도 늘고 있는 다양한 관절 질환에 맞춰 치료법을 제안합니다.</p>
+  <p>DNA 주사(PDRN)와 프롤로 주사는 손상된 인대·힘줄 조직의 재생을 유도하는 치료입니다. 신경차단술은 통증을 일으키는 신경 부위에 직접 약물을 주입해 통증의 경로를 차단합니다.</p>
   <div class="p2"><span class="pt">POINT 2</span>
-  <h3>스테로이드 주사가 <b>아닙니다.</b></h3>
-  <p>인체에 부담이 적은 성분을 사용해 임산부·고령·기저질환 환자도 상담 후 치료할 수 있습니다.</p></div>
+  <h3>눈으로 보면서 <b>정확한 위치에 시술합니다.</b></h3>
+  <p>C-arm·초음파 영상으로 손상 부위를 확인하고 실시간으로 보면서 주입합니다. 시술은 10~20분 내외로 입원 없이 당일 귀가하며, 도수치료와 병행하면 회복을 앞당길 수 있습니다.</p></div>
   <ul class="kw">
-    <li><b>정확</b>통증 부위<br>전문의 1:1 진단</li><li><b>정밀</b>개인 맞춤<br>치료 설계</li><li><b>회복</b>통증 개선<br>인대 강화</li><li><b>안전</b>신체 스스로의<br>재생을 돕는 치료</li>
+    <li><b>진단</b>C-arm·초음파<br>영상 확인</li><li><b>정밀</b>실시간 영상<br>유도 시술</li><li><b>재생</b>DNA·프롤로<br>인대 강화</li><li><b>병행</b>체외충격파<br>도수치료</li>
   </ul>
 </div>
 {{ ph('fig-nonsurgical.jpg', '', 'fig', '무릎 비수술 치료', True, 800, 960) }}
@@ -131,14 +134,14 @@
 <section class="disc"{% if only_tab %} data-only-tab="{{ only_tab }}"{% endif %}>
   <div class="wrap">
     <span class="lbl">수술을 권유받으셨나요?</span>
-    <h2>척추 · 디스크 <span style="color:var(--c-teal)">클리닉</span></h2>
-    <p class="sub">척추·디스크 질환의 상당수는 수술 없이 호전됩니다. 정확한 진단 후 보존적 치료로 충분히 나아질 수 있는 경우, 불필요한 수술을 권하지 않습니다.</p>
+    <h2>척추 · 신경통증 <span style="color:var(--c-teal)">클리닉</span></h2>
+    <p class="sub">척추·디스크 질환의 상당수는 수술 없이 호전됩니다. 정확한 진단 후 신경차단술·주사치료로 충분히 나아질 수 있는 경우, 불필요한 수술을 권하지 않습니다.</p>
     <div class="slider">
       <div class="track">
         <div class="card">{{ ph('card-disc.jpg', '', 'im', '허리·목 디스크', True, 800, 500) }}<div class="tt"><h3>허리·목 디스크</h3><p>튀어나온 디스크가 신경을 눌러 생기는 통증·저림</p></div></div>
-        <div class="card">{{ ph('card-scoliosis.jpg', '', 'im', '척추측만증', True, 800, 500) }}<div class="tt"><h3>척추측만증</h3><p>척추가 옆으로 휘어 자세·통증 문제가 생기는 질환</p></div></div>
+        <div class="card">{{ ph('card-headache.jpg', '', 'im', '두통', True, 800, 500) }}<div class="tt"><h3>긴장성 두통·경추성 두통</h3><p>목·어깨 근육 긴장과 경추 문제에서 오는 만성 두통</p></div></div>
         <div class="card">{{ ph('card-stenosis.jpg', '', 'im', '척추관협착증', True, 800, 500) }}<div class="tt"><h3>척추관협착증</h3><p>신경이 지나는 통로가 좁아져 오래 걷기 힘든 증상</p></div></div>
-        <div class="card">{{ ph('card-fracture.jpg', '', 'im', '척추압박골절', True, 800, 500) }}<div class="tt"><h3>척추압박골절</h3><p>골다공증 등으로 척추뼈가 내려앉는 골절</p></div></div>
+        <div class="card">{{ ph('card-shoulder.jpg', '', 'im', '대상포진 후 신경통', True, 800, 500) }}<div class="tt"><h3>대상포진 후 신경통</h3><p>대상포진이 지나간 뒤에도 남는 타는 듯한 신경통</p></div></div>
         <div class="card">{{ ph('card-neck.jpg', '', 'im', '일자목·거북목', True, 800, 500) }}<div class="tt"><h3>일자목·거북목</h3><p>목 곡선이 사라져 생기는 두통·어깨 결림</p></div></div>
       </div>
       <button class="arr l" type="button" aria-label="이전">‹</button><button class="arr r" type="button" aria-label="다음">›</button>
@@ -149,7 +152,7 @@
 
 {# 병원 둘러보기 그리드 (대표 + 썸네일 6) #}
 {% macro tour_grid() -%}
-<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', '병원 로비') }}</div>
+<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', '접수 카운터') }}</div>
 <div class="thumbs">
   {% for i in range(1, 7) %}<div class="ph{% if i == 1 %} on{% endif %}" data-name="tour-{{ i }}.jpg" role="button" tabindex="0" aria-label="사진 {{ i }} 보기">{{ img('tour-' ~ i ~ '.jpg', '병원 내부 ' ~ i, True, 1200, 800) }}</div>{% endfor %}
 </div>
