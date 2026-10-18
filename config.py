@@ -32,13 +32,13 @@ CLINIC = {
     "short": "운남튼튼",              # 짧은 이름 (히어로 kicker, 비수술 섹션 제목)
     "en": "UNNAM TUNTUN PAIN CLINIC",
     "mark": "OO",                     # 텍스트 마크 (현재 헤더는 img/logo-mark.png 사용)
-    "region": "[지역명]",             # SEO: "[병원명] 마취통증의학과 [지역명]"
-    "tel": "000.000.0000",            # 화면 표시용
-    "tel_link": "0000000000",         # tel: 링크용 (숫자만)
-    "fax": "[000-000-0000]",
-    "address": "[도로명 주소, 층]",
-    "address_road": "[도로명 주소]",  # JSON-LD streetAddress
-    "city": "[시/군/구]",             # JSON-LD addressLocality
+    "region": "광주 광산구 운남동",   # SEO 지역명
+    "tel": "062.710.9907",            # 화면 표시용
+    "tel_link": "0627109907",         # tel: 링크용 (숫자만)
+    "fax": "062.710.9908",
+    "address": "전남광주통합특별시 광산구 임방울대로 138, 5층 (운남삼성아파트 앞 대로변 베스트원빌딩)",
+    "address_road": "광주광역시 광산구 임방울대로 138",  # 지도 검색·JSON-LD
+    "city": "광산구",                 # JSON-LD addressLocality
     "postal": "",                     # 우편번호
     "ceo": "[성명]",                  # 대표자
     "biz_no": "[000-00-00000]",       # 사업자등록번호
@@ -49,13 +49,13 @@ CLINIC = {
     "hours": [
         # (label, time, note)  — note 없으면 ""
         {"label": "평 일", "time": "AM 08:30 ~ PM 18:30", "note": ""},
+        {"label": "토요일", "time": "AM 08:30 ~ PM 14:00", "note": "(점심시간 없이 진료)"},
         {"label": "점심시간", "time": "PM 01:00 ~ PM 02:00", "note": ""},
-        {"label": "토요일", "time": "AM 08:30 ~ PM 13:30", "note": "(점심시간 없음)"},
     ],
     # JSON-LD openingHoursSpecification 용 구조화 데이터
     "opening_hours": [
         {"days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:30", "closes": "18:30"},
-        {"days": ["Saturday"], "opens": "08:30", "closes": "13:30"},
+        {"days": ["Saturday"], "opens": "08:30", "closes": "14:00"},
     ],
     "closed": "일요일·공휴일 휴진",
     "parking": "[건물 지하주차장 무료]",
