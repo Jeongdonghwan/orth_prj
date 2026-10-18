@@ -2,6 +2,14 @@
 {% from "_macros.html" import ph, img, svg, clinics_grid, doctor_section, equip_section, clinic_tabs, spine_panel, joint_panel, ns_points, steps_cards, disc_section, tour_grid, loc_split with context %}
 
 {% block content %}
+<!-- 0. 인트로 스플래시 (세션당 1회) -->
+<div class="splash" id="splash" aria-hidden="true">
+  <img src="{{ url_for('static', filename='img/logo-mark-white.png') }}" alt="" width="220" height="175">
+  <strong>{{ clinic.name }}</strong><span>{{ clinic.en }}</span>
+</div>
+<script>(function(){var s=document.getElementById('splash');try{if(sessionStorage.getItem('splash')){s.remove();return}sessionStorage.setItem('splash','1')}catch(e){}
+var done=function(){s.classList.add('out');setTimeout(function(){s.remove()},600)};s.addEventListener('click',done);
+setTimeout(done,matchMedia('(prefers-reduced-motion: reduce)').matches?0:2000)})();</script>
 <!-- 1. 히어로 슬라이더 -->
 <section class="hero" id="about">
   <div class="slides" aria-hidden="true">

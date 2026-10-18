@@ -300,6 +300,14 @@ footer .links a:hover{color:#9CC9F5}
 footer p{line-height:1.9}
 footer .copy{margin-top:14px;opacity:.55}
 
+/* ==== 인트로 스플래시 ==== */
+.splash{position:fixed;inset:0;z-index:200;background:var(--grad);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:opacity .6s var(--ease),visibility .6s}
+.splash img{width:120px;height:auto;animation:splashIn 1s var(--ease) both}
+.splash strong{margin-top:22px;font-size:28px;font-weight:700;letter-spacing:-.02em;animation:splashIn 1s .25s var(--ease) both}
+.splash span{margin-top:8px;font-size:12px;letter-spacing:.3em;color:#9CC9F5;animation:splashIn 1s .45s var(--ease) both}
+.splash.out{opacity:0;visibility:hidden}
+@keyframes splashIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+
 /* ==== 반응형 ==== */
 @media(max-width:1024px){
   :root{--sec:80px}
@@ -354,6 +362,7 @@ footer .copy{margin-top:14px;opacity:.55}
   .tour .main{height:250px}
   .thumbs .ph{height:74px}
   .loc .tel{font-size:26px}
+  .splash img{width:92px}.splash strong{font-size:22px}
   .pband{padding:60px 0 50px}.pband h1{font-size:28px}
   .greet .ph{height:240px}
   .form{padding:28px 20px}
@@ -365,5 +374,6 @@ footer .copy{margin-top:14px;opacity:.55}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
+  .splash{display:none}
   .rv{opacity:1;transform:none}
 }
