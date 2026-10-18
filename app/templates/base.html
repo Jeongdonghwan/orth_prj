@@ -76,7 +76,6 @@
   {{ inquiry_form('m', title='상담 예약 문의', modal=True) }}
 </div>
 
-{% if kakao_js_key %}<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_js_key }}&autoload=false"></script>{% endif %}
 <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 {% block scripts %}{% endblock %}
 </body>

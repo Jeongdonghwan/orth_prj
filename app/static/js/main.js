@@ -143,17 +143,4 @@
     btn.disabled = false;
   }));
 
-  // ---- 카카오맵 ----
-  const mapEl = document.getElementById('map');
-  if (mapEl && mapEl.dataset.lat && window.kakao && kakao.maps && kakao.maps.load) {
-    kakao.maps.load(() => {
-      const pos = new kakao.maps.LatLng(parseFloat(mapEl.dataset.lat), parseFloat(mapEl.dataset.lng));
-      const map = new kakao.maps.Map(mapEl, { center: pos, level: 3 });
-      const marker = new kakao.maps.Marker({ position: pos, map });
-      const iw = new kakao.maps.InfoWindow({ content: '<div style="padding:6px 12px;font-size:13px;font-weight:600;white-space:nowrap">' + mapEl.dataset.name + '</div>' });
-      iw.open(map, marker);
-      map.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
-      const ph = mapEl.querySelector('.ph'); if (ph) ph.remove();
-    });
-  }
 })();

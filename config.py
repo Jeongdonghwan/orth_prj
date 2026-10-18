@@ -89,7 +89,6 @@ class Config:
     JSON_AS_ASCII = False
 
     SITE_URL = _env("SITE_URL", "http://localhost:5000").rstrip("/")
-    KAKAO_JS_KEY = _env("KAKAO_JS_KEY")
     NAVER_SITE_VERIFICATION = _env("NAVER_SITE_VERIFICATION")
 
     # 관리자 (Basic Auth). ADMIN_PW 비어 있으면 /admin 접근 차단.

@@ -227,7 +227,7 @@ nav ul a:hover::after{transform:scaleX(1)}
 .loc{padding-bottom:0}
 .loc .split{display:grid;grid-template-columns:1fr 1fr;margin-top:50px}
 .loc .map{height:440px;position:relative}
-.loc .map .ph{height:100%;position:absolute;inset:0;color:var(--c-mute);display:grid;place-items:center;font-size:14px;background:var(--c-soft2)}
+.loc .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--c-soft2)}
 .map-btn{position:absolute;right:14px;bottom:14px;z-index:5;padding:10px 22px;font-size:13px;background:var(--grad-h);color:#fff;border-color:transparent}
 .loc .info{background:var(--c-navy);color:#fff;padding:60px 72px;position:relative;overflow:hidden}
 .loc .info::after{content:"";position:absolute;right:-60px;bottom:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.05)}

@@ -20,7 +20,7 @@ python run.py                   # http://127.0.0.1:5000  (포트 변경: PORT=50
 ```
 
 - 관리자: `http://127.0.0.1:5000/admin/inquiries` — `.env`의 `ADMIN_ID` / `ADMIN_PW` 로 Basic Auth. `ADMIN_PW` 가 비어 있으면 403.
-- 카카오맵: `KAKAO_JS_KEY` + `CLINIC_LAT` / `CLINIC_LNG` 세 값이 모두 있어야 지도가 뜨고, 없으면 회색 안내 박스.
+- 지도: 구글맵 임베드(키 불필요). `CLINIC_LAT`/`CLINIC_LNG` 가 있으면 좌표로, 없으면 `config.py` 의 병원명+주소로 검색해 표시.
 - 스크린샷 검증: 서버 띄운 뒤 `PORT=5000 python scripts/screenshot.py screenshots / /about /doctor "/clinic?tab=spine" /location`
 
 ## 디자인 (v2, 2026-09-03)

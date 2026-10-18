@@ -1,4 +1,5 @@
 import json
+from urllib.parse import quote
 import logging
 from datetime import datetime
 
@@ -34,10 +35,10 @@ def create_app(config_object=Config):
     def inject_globals():
         c = app.config["CLINIC"]
         lat, lng = c.get("lat"), c.get("lng")
-        if lat is not None and lng is not None:
-            map_link = "https://map.kakao.com/link/to/{},{},{}".format(c["name"], lat, lng)
-        else:
-            map_link = "https://map.kakao.com/link/search/" + c["name"]
+        # 구글맵: 좌표가 있으면 좌표, 없으면 "병원명 주소" 검색. 키 불필요.
+        q = quote(f"{lat},{lng}" if lat is not None and lng is not None else f"{c['name']} {c['address_road']}")
+        map_link = "https://www.google.com/maps/dir/?api=1&destination=" + q
+        map_embed = "https://www.google.com/maps?q=" + q + "&z=17&hl=ko&output=embed"
         def jsonld_clinic():
             data = {
                 "@context": "https://schema.org",
@@ -67,7 +68,7 @@ def create_app(config_object=Config):
             "clinic": c,
             "jsonld_clinic": jsonld_clinic,
             "map_link": map_link,
-            "kakao_js_key": app.config.get("KAKAO_JS_KEY", ""),
+            "map_embed": map_embed,
             "naver_site_verification": app.config.get("NAVER_SITE_VERIFICATION", ""),
             "site_url": app.config.get("SITE_URL", ""),
             "year": datetime.now().year,

@@ -165,11 +165,11 @@
 </ul>
 {%- endmacro %}
 
-{# 카카오맵 + 진료안내 스플릿 #}
+{# 구글맵 + 진료안내 스플릿 #}
 {% macro loc_split() -%}
 <div class="split">
-  <div class="map" id="map"{% if clinic.lat is not none and clinic.lng is not none %} data-lat="{{ clinic.lat }}" data-lng="{{ clinic.lng }}" data-name="{{ clinic.name }}"{% endif %}>
-    <div class="ph" data-name="kakao-map">{% if kakao_js_key and clinic.lat is not none %}지도를 불러오는 중…{% else %}카카오맵 (KAKAO_JS_KEY · CLINIC_LAT/LNG 설정 시 표시){% endif %}</div>
+  <div class="map">
+    <iframe src="{{ map_embed }}" title="{{ clinic.name }} 위치 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     <a class="btn map-btn" href="{{ map_link }}" target="_blank" rel="noopener">길찾기</a>
   </div>
   <div class="info">

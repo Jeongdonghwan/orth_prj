@@ -20,8 +20,8 @@ sed -i "s|^DB_PASSWORD=.*|DB_PASSWORD=1234|" .env
 sed -i "s|^ADMIN_ID=.*|ADMIN_ID=admin|" .env
 sed -i "s|^ADMIN_PW=.*|ADMIN_PW=1234|" .env
 sed -i "s|^SITE_URL=.*|SITE_URL=http://211.45.175.195:8037|" .env
-# 카카오맵·좌표·네이버 인증값은 받는 대로:
-# sed -i "s|^KAKAO_JS_KEY=.*|KAKAO_JS_KEY=xxxx|; s|^CLINIC_LAT=.*|CLINIC_LAT=37.xxxx|; s|^CLINIC_LNG=.*|CLINIC_LNG=127.xxxx|" .env
+# 좌표·네이버 인증값은 받는 대로 (좌표 없으면 주소로 지도 검색):
+# sed -i "s|^CLINIC_LAT=.*|CLINIC_LAT=37.xxxx|; s|^CLINIC_LNG=.*|CLINIC_LNG=127.xxxx|" .env
 cat .env
 
 cp deploy/ortho.service /etc/systemd/system/ortho.service
