@@ -66,7 +66,7 @@
       <a class="flogo" href="{{ url_for('pages.index') }}"><img src="{{ url_for('static', filename='img/logo-mark-white.png') }}" alt="" width="220" height="175" loading="lazy"><span>{{ clinic.name }}<small>{{ clinic.en }}</small></span></a>
       <div class="links"><a href="{{ url_for('pages.about') }}">병원소개</a><a href="{{ url_for('pages.location') }}">오시는길</a><a href="#">이용약관</a><a href="#">개인정보처리방침</a></div>
     </div>
-    <p>{{ clinic.address }}<br>대표자 : {{ clinic.ceo }} &nbsp; 사업자등록번호 : {{ clinic.biz_no }} &nbsp; 전화 : {{ clinic.tel }} &nbsp; 팩스 : {{ clinic.fax }}</p>
+    <p>{{ clinic.address }}<br>상호 : {{ clinic.legal_name }} &nbsp; 대표자 : {{ clinic.ceo }} &nbsp; 사업자등록번호 : {{ clinic.biz_no }} &nbsp; 전화 : {{ clinic.tel }} &nbsp; 팩스 : {{ clinic.fax }}</p>
     <p class="copy">Copyright © {{ clinic.name }}. All rights reserved.</p>
   </div>
 </footer>

@@ -29,6 +29,7 @@ def _float_or_none(key):
 # ---------------------------------------------------------------------------
 CLINIC = {
     "name": "운남튼튼마취통증의학과",   # 정식 명칭 (로고·타이틀·푸터)
+    "legal_name": "운남튼튼마취통증의학과의원",  # 사업자등록증 상호 (푸터 법적 표기)
     "short": "운남튼튼",              # 짧은 이름 (히어로 kicker, 비수술 섹션 제목)
     "en": "UNNAM TUNTUN PAIN CLINIC",
     "mark": "OO",                     # 텍스트 마크 (현재 헤더는 img/logo-mark.png 사용)
@@ -40,9 +41,9 @@ CLINIC = {
     "address_road": "광주광역시 광산구 임방울대로 138",  # 지도 검색·JSON-LD
     "city": "광산구",                 # JSON-LD addressLocality
     "postal": "",                     # 우편번호
-    "ceo": "[성명]",                  # 대표자
-    "biz_no": "[000-00-00000]",       # 사업자등록번호
-    "doctor": "[원장 성명]",          # 대표원장 성명
+    "ceo": "김선환",                  # 대표자 (사업자등록증)
+    "biz_no": "377-95-02184",         # 사업자등록번호
+    "doctor": "김선환",               # 대표원장 성명
     "doctor_title": "대표원장",
     "email": _env("CLINIC_EMAIL"),    # 문의 접수 메일 수신 주소 (선택)
     "blog_url": _env("CLINIC_BLOG_URL", "#"),
