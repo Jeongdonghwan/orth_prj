@@ -120,7 +120,8 @@ nav ul a:hover::after{transform:scaleX(1)}
 .doctor::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(30,33,136,.88),rgba(0,91,172,.6))}
 .doctor .wrap{position:relative;z-index:2;display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:center;padding-top:90px;padding-bottom:90px}
 .doctor .photo{height:500px;border-radius:var(--r);box-shadow:0 30px 60px rgba(0,0,0,.35)}
-.doctor .photo>img{object-position:50% 30%}
+.doctor .photo{background:#e9eaec}
+.doctor .photo>img{object-position:50% 0}
 .doctor .info{padding:0}
 .doctor h2{color:#fff;text-align:left}
 .doctor .nm{margin-top:30px;font-size:26px;font-weight:700;display:flex;align-items:baseline;gap:10px}
