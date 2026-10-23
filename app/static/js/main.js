@@ -96,7 +96,7 @@
       if (!main || !im) return;
       thumbs.forEach(x => x.classList.toggle('on', x === th));
       mainPh.classList.remove('sw'); void mainPh.offsetWidth; mainPh.classList.add('sw');
-      main.src = im.src; main.alt = im.alt; mainPh.dataset.name = th.dataset.name || '';
+      main.src = im.src; main.alt = im.alt; mainPh.dataset.name = th.dataset.name || ''; const cap = mainPh.querySelector('.cap'); if (cap) cap.textContent = im.alt;
     };
     thumbs.forEach(th => {
       th.addEventListener('click', () => pick(th));

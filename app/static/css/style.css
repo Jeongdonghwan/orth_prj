@@ -118,10 +118,13 @@ nav ul a:hover::after{transform:scaleX(1)}
 .doctor>.ph{position:absolute;inset:0;background:var(--c-navy)}
 .doctor>.ph>img{opacity:.22;filter:saturate(.6)}
 .doctor::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(30,33,136,.88),rgba(0,91,172,.6))}
-.doctor .wrap{position:relative;z-index:2;max-width:900px}
-.doctor .info{padding:100px 0 96px;text-align:center}
-.doctor h2{color:#fff}
-.doctor .nm{margin-top:36px;font-size:26px;font-weight:700;display:flex;align-items:baseline;justify-content:center;gap:10px}
+.doctor .wrap{position:relative;z-index:2;display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:center;padding-top:90px;padding-bottom:90px}
+.doctor .photo{height:500px;border-radius:var(--r);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.doctor .photo>img{object-position:50% 30%}
+.doctor .info{padding:0}
+.doctor h2{color:#fff;text-align:left}
+.doctor .nm{margin-top:30px;font-size:26px;font-weight:700;display:flex;align-items:baseline;gap:10px}
+.doctor .cols.career b{color:#fff;font-weight:700}
 .doctor .bio-ph{margin:34px auto 0;max-width:640px;padding:40px 24px;border:1px dashed rgba(255,255,255,.45);border-radius:var(--r);color:rgba(255,255,255,.8);font-size:15px;background:rgba(255,255,255,.06)}
 .doctor .nm span{font-size:13px;font-weight:600;background:rgba(255,255,255,.15);padding:3px 12px;border-radius:999px;letter-spacing:.05em}
 .doctor .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 32px;margin-top:26px;font-size:14px;line-height:1.8;opacity:.92}
@@ -218,7 +221,8 @@ nav ul a:hover::after{transform:scaleX(1)}
 .tour .main{height:540px;margin-top:50px;border-radius:var(--r);box-shadow:0 24px 60px rgba(0,0,0,.35)}
 .tour .main>img{transition:opacity .5s,transform 1.2s var(--ease)}
 .tour .main.sw>img{animation:fade .6s}
-.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:14px}
+.thumbs{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-top:14px}
+.tour .main .cap{position:absolute;left:18px;bottom:16px;background:rgba(20,26,58,.7);color:#fff;font-size:14px;font-weight:600;padding:6px 14px;border-radius:999px}
 .thumbs .ph{height:112px;cursor:pointer;opacity:.6;border-radius:12px;transition:.3s;outline:2px solid transparent;outline-offset:2px}
 .thumbs .ph:hover,.thumbs .ph.on{opacity:1;outline-color:#9CC9F5}
 .thumbs .ph:hover>img{transform:scale(1.08)}
@@ -315,7 +319,8 @@ footer .copy{margin-top:14px;opacity:.55}
   .quick{display:none}
   .hero{height:560px}.hero h1{font-size:38px}
   .clinics{grid-template-columns:repeat(2,1fr)}
-  .doctor .info{padding:70px 0 64px}
+  .doctor .wrap{grid-template-columns:1fr;gap:36px;padding-top:64px;padding-bottom:64px}
+  .doctor .photo{height:420px;max-width:360px;width:100%;margin:0 auto}
   .panel{grid-template-columns:1fr;padding:40px 30px}
   .panel .fig{height:360px}
   .ns .fig{height:360px}
@@ -325,7 +330,7 @@ footer .copy{margin-top:14px;opacity:.55}
   .card{flex-basis:calc((100% - 20px)/2)}
   .loc .split{grid-template-columns:1fr}
   .loc .info{padding:44px 30px}
-  .thumbs{grid-template-columns:repeat(3,1fr)}
+  .thumbs{grid-template-columns:repeat(4,1fr)}
   .greet{grid-template-columns:1fr}
   .park .grid{grid-template-columns:1fr}
 }
@@ -356,6 +361,7 @@ footer .copy{margin-top:14px;opacity:.55}
   .kw{flex-wrap:wrap;gap:18px 8px}
   .kw li{flex:1 1 calc(50% - 8px)}
   .two{grid-template-columns:1fr}
+  .doctor .cols{grid-template-columns:1fr}
   .tx{flex-wrap:wrap;gap:16px}
   .card{flex-basis:84%}
   .steps .grid,.panel .steps-in{grid-template-columns:1fr}

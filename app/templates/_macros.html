@@ -28,7 +28,7 @@
            {'spine': url_for('pages.clinic', tab='spine'), 'joint': url_for('pages.clinic', tab='joint'), 'nonsurgical': url_for('pages.clinic', tab='nonsurgical'), 'manual': url_for('pages.clinic', tab='manual')} %}
 <div class="clinics">
   <a href="{{ L.spine }}"><div class="ic"><img src="{{ svg('icon-spine') }}" alt="" width="54" height="54"></div><h3>척추클리닉</h3><p>목·허리 디스크, 척추관협착증,<br>일자목·거북목, 교통사고 후유증,<br>수술 후 통증</p></a>
-  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>무릎 관절염, 오십견·회전근개,<br>테니스엘보·골프엘보,<br>족저근막염·손목 통증</p></a>
+  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>무릎 관절염, 오십견·회전근개,<br>테니스엘보·골프엘보,<br>어깨 석회화건염</p></a>
   <a href="{{ L.nonsurgical }}"><div class="ic"><img src="{{ svg('icon-injection') }}" alt="" width="54" height="54"></div><h3>비수술클리닉</h3><p>신경차단술, DNA 주사,<br>프롤로 주사, 체외충격파,<br>두통·대상포진 통증</p></a>
   <a href="{{ L.manual }}"><div class="ic"><img src="{{ svg('icon-manual') }}" alt="" width="54" height="54"></div><h3>도수·운동클리닉</h3><p>만성통증 도수치료, 근막 이완,<br>체형교정, 1:1 맞춤 운동치료</p></a>
 </div>
@@ -39,10 +39,21 @@
 <section class="doctor" id="doctor">
   {{ ph('doctor-bg.jpg') }}
   <div class="wrap">
+    {{ ph('doctor-main.jpg', '', 'photo', clinic.doctor ~ ' ' ~ clinic.doctor_title, True, 800, 1040) }}
     <div class="info">
-      <h2>대학병원에서 쌓은 경험을,<br><span class="thin">동네에서 편하게.</span></h2>
+      <h2>통증 치료 현장에서 쌓은 경험을,<br><span class="thin">운남에서 가까이.</span></h2>
       <p class="nm">{{ clinic.doctor }}<span>{{ clinic.doctor_title }}</span></p>
-      <div class="bio-ph">원장님 이력이 들어갈 자리입니다.</div>
+      <ul class="cols career">
+        <li>전) 서산튼튼통증의학과 원장</li><li>전) 강화튼튼신경외과 원장</li>
+        <li>전) 화순튼튼마취통증의학과 원장</li><li><b>현) 운남튼튼마취통증의학과 원장</b></li>
+      </ul>
+      <ul class="cols en">
+        <li>대한마취통증의학회 정회원</li><li>대한통증학회 정회원</li>
+        <li>대한척추통증학회 정회원</li><li>대한신경통증학회 정회원</li>
+        <li>대한통증연구학회 정회원</li><li>대한노인병학회 정회원</li>
+        <li>대한말초신경학회 정회원</li><li>대한근골격계초음파학회 정회원</li>
+        <li>대한신경근골격초음파학회 정회원</li><li>근막통증유발점 주사치료(TPI) 연수교육 이수</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -58,7 +69,7 @@
     <div class="grid">
       <figure>{{ ph('equip-1.jpg', '', '', 'C-arm 시술실', True, 1200, 800) }}<figcaption><h3>C-arm 시술실</h3><p>신경차단술·DNA 주사 시 실시간 영상으로 바늘 위치를 확인합니다.</p></figcaption></figure>
       <figure>{{ ph('equip-2.jpg', '', '', 'X-ray·골밀도 검사실', True, 1200, 800) }}<figcaption><h3>X-ray · 골밀도 검사실</h3><p>척추·관절 상태와 골밀도를 확인해 치료 계획의 기준을 잡습니다.</p></figcaption></figure>
-      <figure>{{ ph('equip-3.jpg', '', '', '물리·도수치료실', True, 1200, 800) }}<figcaption><h3>물리 · 도수치료실</h3><p>체외충격파와 물리치료, 1:1 도수치료를 한 공간에서 이어서 받습니다.</p></figcaption></figure>
+      <figure>{{ ph('equip-3.jpg', '', '', '체외충격파 치료', True, 1200, 800) }}<figcaption><h3>체외충격파실</h3><p>힘줄·인대 통증 부위에 충격파를 가해 회복을 돕습니다. 물리·도수치료와 이어서 받습니다.</p></figcaption></figure>
     </div>
   </div>
 </section>
@@ -79,8 +90,8 @@
     <ul class="two"><li>목·허리 디스크</li><li>일자목·거북목</li><li>척추관협착증</li><li>수술 후 통증</li><li>교통사고 후유증</li><li>긴장성 두통</li></ul>
     <span class="tag">척추질환에 적용되는 비수술치료</span>
     <ul class="tx">
-      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>체외충격파</li><li><i><img src="{{ svg('icon-spine') }}" alt="" width="30" height="30"></i>신경차단술</li>
-      <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>DNA·프롤로 주사</li><li><i><img src="{{ svg('icon-manual') }}" alt="" width="30" height="30"></i>도수·체형교정</li>
+      <li><i><img src="{{ svg('icon-spine') }}" alt="" width="30" height="30"></i>신경차단술</li><li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>DNA·프롤로 주사</li>
+      <li><i><img src="{{ svg('icon-joint') }}" alt="" width="30" height="30"></i>체외충격파</li><li><i><img src="{{ svg('icon-manual') }}" alt="" width="30" height="30"></i>도수·체형교정</li>
     </ul>
   </div>
   {{ ph('fig-spine.jpg', '', 'fig', '척추 검진', True, 800, 940) }}
@@ -94,7 +105,7 @@
     <h3><b>관절</b>은 한 번 닳으면 되돌리기 어렵습니다.<br><b>늦기 전에 지키는 치료</b>를 합니다.</h3>
     <p class="body">무릎·어깨·손목·발목 관절은 매일 쓰는 만큼 손상도 빠릅니다. 통증을 참고 지내다 보면 연골과 인대 손상이 진행되어 치료 선택지가 줄어듭니다. 초음파로 인대·힘줄 상태를 확인하고, DNA 주사·체외충격파·도수치료를 조합해 관절 기능을 최대한 보존합니다.</p>
     <span class="tag">관절질환의 종류</span>
-    <ul class="two"><li>무릎 관절염</li><li>손목터널증후군</li><li>오십견·회전근개 손상</li><li>족저근막염·아킬레스건염</li><li>테니스엘보·골프엘보</li><li>어깨 석회화건염</li></ul>
+    <ul class="two"><li>무릎 관절염</li><li>오십견·회전근개 손상</li><li>테니스엘보·골프엘보</li><li>어깨 석회화건염</li><li>아킬레스건염</li><li>발목 염좌</li></ul>
     <span class="tag">관절질환에 적용되는 비수술치료</span>
     <ul class="tx">
       <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>연골주사</li><li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>프롤로·DNA 주사</li>
@@ -115,10 +126,10 @@
   <h3>눈으로 보면서 <b>정확한 위치에 시술합니다.</b></h3>
   <p>C-arm·초음파 영상으로 손상 부위를 확인하고 실시간으로 보면서 주입합니다. 시술은 10~20분 내외로 입원 없이 당일 귀가하며, 도수치료와 병행하면 회복을 앞당길 수 있습니다.</p></div>
   <ul class="kw">
-    <li><b>진단</b>C-arm·초음파<br>영상 확인</li><li><b>정밀</b>실시간 영상<br>유도 시술</li><li><b>재생</b>DNA·프롤로<br>인대 강화</li><li><b>병행</b>체외충격파<br>도수치료</li>
+    <li><b>진단</b>X-ray·초음파를 통한<br>영상 확인</li><li><b>정밀</b>실시간 영상<br>유도 시술</li><li><b>재생</b>DNA·프롤로<br>인대 강화</li><li><b>병행</b>체외충격파<br>도수치료</li>
   </ul>
 </div>
-{{ ph('fig-nonsurgical.jpg', '', 'fig', '무릎 비수술 치료', True, 800, 960) }}
+{{ ph('fig-nonsurgical.jpg', '', 'fig', 'C-arm 영상유도 시술', True, 800, 960) }}
 {%- endmacro %}
 
 {# 도수치료 STEP 카드 4개 #}
@@ -152,9 +163,10 @@
 
 {# 병원 둘러보기 그리드 (대표 + 썸네일 6) #}
 {% macro tour_grid() -%}
-<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', '접수 카운터') }}</div>
+{% set rooms = ['접수 데스크', '로비·대기실', '진료실·초음파실', 'C-arm 시술실', 'X-ray실', '체외충격파실', '도수치료실', '물리치료실'] %}
+<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', rooms[0]) }}<span class="cap">{{ rooms[0] }}</span></div>
 <div class="thumbs">
-  {% for i in range(1, 7) %}<div class="ph{% if i == 1 %} on{% endif %}" data-name="tour-{{ i }}.jpg" role="button" tabindex="0" aria-label="사진 {{ i }} 보기">{{ img('tour-' ~ i ~ '.jpg', '병원 내부 ' ~ i, True, 1200, 800) }}</div>{% endfor %}
+  {% for r in rooms %}<div class="ph{% if loop.first %} on{% endif %}" data-name="tour-{{ loop.index }}.jpg" role="button" tabindex="0" aria-label="{{ r }} 보기">{{ img('tour-' ~ loop.index ~ '.jpg', r, True, 800, 533) }}</div>{% endfor %}
 </div>
 {%- endmacro %}
 

@@ -31,7 +31,7 @@ CLINIC = {
     "name": "운남튼튼마취통증의학과",   # 정식 명칭 (로고·타이틀·푸터)
     "legal_name": "운남튼튼마취통증의학과의원",  # 사업자등록증 상호 (푸터 법적 표기)
     "short": "운남튼튼",              # 짧은 이름 (히어로 kicker, 비수술 섹션 제목)
-    "en": "UNNAM TUNTUN PAIN CLINIC",
+    "en": "UNNAM TEUNTEUN PAIN CLINIC",
     "mark": "OO",                     # 텍스트 마크 (현재 헤더는 img/logo-mark.png 사용)
     "region": "광주 광산구 운남동",   # SEO 지역명
     "tel": "062.710.9907",            # 화면 표시용
@@ -49,9 +49,9 @@ CLINIC = {
     "blog_url": _env("CLINIC_BLOG_URL", "#"),
     "hours": [
         # (label, time, note)  — note 없으면 ""
-        {"label": "평 일", "time": "AM 08:30 ~ PM 18:30", "note": ""},
-        {"label": "토요일", "time": "AM 08:30 ~ PM 14:00", "note": "(점심시간 없이 진료)"},
-        {"label": "점심시간", "time": "PM 01:00 ~ PM 02:00", "note": ""},
+        {"label": "평 일", "time": "08:30 ~ 18:30", "note": ""},
+        {"label": "토요일", "time": "08:30 ~ 14:00", "note": "(점심시간 없이 진료)"},
+        {"label": "점심시간", "time": "13:00 ~ 14:00", "note": ""},
     ],
     # JSON-LD openingHoursSpecification 용 구조화 데이터
     "opening_hours": [
