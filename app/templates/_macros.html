@@ -39,20 +39,33 @@
 <section class="doctor" id="doctor">
   {{ ph('doctor-bg.jpg') }}
   <div class="wrap">
-    {{ ph('doctor-main.jpg', '', 'photo', clinic.doctor ~ ' ' ~ clinic.doctor_title, True, 800, 1040) }}
+    <div class="dphoto"><img src="{{ url_for('static', filename='img/doctor-cut.png') }}" alt="{{ clinic.doctor }} {{ clinic.doctor_title }}" width="700" height="1331" loading="lazy"></div>
     <div class="info">
       <h2>통증 치료 현장에서 쌓은 경험을,<br><span class="thin">운남에서 가까이.</span></h2>
       <p class="nm">{{ clinic.doctor }}<span>{{ clinic.doctor_title }}</span></p>
-      <ul class="cols career">
-        <li>전) 서산튼튼통증의학과 원장</li><li>전) 강화튼튼신경외과 원장</li>
-        <li>전) 화순튼튼마취통증의학과 원장</li><li><b>현) 운남튼튼마취통증의학과 원장</b></li>
-      </ul>
-      <ul class="cols en">
-        <li>대한마취통증의학회 정회원</li><li>대한통증학회 정회원</li>
-        <li>대한척추통증학회 정회원</li><li>대한신경통증학회 정회원</li>
-        <li>대한통증연구학회 정회원</li><li>대한노인병학회 정회원</li>
-        <li>대한말초신경학회 정회원</li><li>대한근골격계초음파학회 정회원</li>
-        <li>대한신경근골격초음파학회 정회원</li><li>근막통증유발점 주사치료(TPI) 연수교육 이수</li>
+      <div class="bio">
+        <ul>
+          <li>전) 서산튼튼통증의학과 원장</li>
+          <li>전) 강화튼튼신경외과 원장</li>
+          <li>전) 화순튼튼마취통증의학과 원장</li>
+          <li><b>현) 운남튼튼마취통증의학과 원장</b></li>
+        </ul>
+        <ul>
+          <li>대한마취통증의학회 정회원</li>
+          <li>대한통증학회 정회원</li>
+          <li>대한척추통증학회 정회원</li>
+          <li>대한신경통증학회 정회원</li>
+          <li>대한통증연구학회 정회원</li>
+        </ul>
+        <ul>
+          <li>대한노인병학회 정회원</li>
+          <li>대한말초신경학회 정회원</li>
+          <li>대한근골격계초음파학회 정회원</li>
+          <li>대한신경근골격초음파학회 정회원</li>
+        </ul>
+      </div>
+      <ul class="bio-edu">
+        <li>근막통증유발점 주사치료(TPI) 연수교육 이수</li>
       </ul>
     </div>
   </div>
