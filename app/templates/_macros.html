@@ -81,8 +81,8 @@
     <p class="sub">C-arm·초음파·X-ray로 통증의 원인 부위를 확인하고, 실시간 영상을 보며 정확한 위치에 시술합니다.</p>
     <div class="grid">
       <figure>{{ ph('equip-1.jpg', '', '', 'C-arm 시술실', True, 1200, 800) }}<figcaption><h3>C-arm 시술실</h3><p>신경차단술·DNA 주사 시 실시간 영상으로 바늘 위치를 확인합니다.</p></figcaption></figure>
-      <figure>{{ ph('equip-2.jpg', '', '', 'X-ray·골밀도 검사실', True, 1200, 800) }}<figcaption><h3>X-ray · 골밀도 검사실</h3><p>척추·관절 상태와 골밀도를 확인해 치료 계획의 기준을 잡습니다.</p></figcaption></figure>
       <figure>{{ ph('equip-us.jpg', '', '', '초음파실', True, 1200, 800) }}<figcaption><h3>초음파실</h3><p>근골격계 초음파로 인대·힘줄·근육 상태를 직접 보면서 진단하고, 초음파 유도 주사에 활용합니다.</p></figcaption></figure>
+      <figure>{{ ph('equip-2.jpg', '', '', 'X-ray·골밀도 검사실', True, 1200, 800) }}<figcaption><h3>X-ray · 골밀도 검사실</h3><p>척추·관절 상태와 골밀도를 확인해 치료 계획의 기준을 잡습니다.</p></figcaption></figure>
       <figure>{{ ph('equip-3.jpg', '', '', '체외충격파 치료', True, 1200, 800) }}<figcaption><h3>체외충격파실</h3><p>힘줄·인대 통증 부위에 충격파를 가해 회복을 돕습니다. 물리·도수치료와 이어서 받습니다.</p></figcaption></figure>
     </div>
   </div>
@@ -177,7 +177,7 @@
 
 {# 병원 둘러보기 그리드 (대표 + 썸네일 6) #}
 {% macro tour_grid() -%}
-{% set rooms = [('접수 데스크','tour-1.jpg'), ('로비·대기실','tour-2.jpg'), ('진료실','tour-3.jpg'), ('초음파실','tour-us.jpg'), ('C-arm 시술실','tour-4.jpg'), ('X-ray실','tour-5.jpg'), ('체외충격파실','tour-6.jpg'), ('도수치료실','tour-7.jpg'), ('물리치료실','tour-8.jpg')] %}
+{% set rooms = [('접수 데스크','tour-1.jpg'), ('로비·대기실','tour-2.jpg'), ('진료실','tour-3.jpg'), ('C-arm 시술실','tour-4.jpg'), ('초음파실','tour-us.jpg'), ('X-ray실','tour-5.jpg'), ('체외충격파실','tour-6.jpg'), ('도수치료실','tour-7.jpg'), ('물리치료실','tour-8.jpg')] %}
 <div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', rooms[0][0]) }}<span class="cap">{{ rooms[0][0] }}</span></div>
 <div class="thumbs">
   {% for r, f in rooms %}<div class="ph{% if loop.first %} on{% endif %}" data-name="{{ f }}" role="button" tabindex="0" aria-label="{{ r }} 보기">{{ img(f, r, True, 800, 533) }}</div>{% endfor %}
