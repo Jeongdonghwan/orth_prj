@@ -177,10 +177,10 @@
 
 {# 병원 둘러보기 그리드 (대표 + 썸네일 6) #}
 {% macro tour_grid() -%}
-{% set rooms = ['접수 데스크', '로비·대기실', '진료실·초음파실', 'C-arm 시술실', 'X-ray실', '체외충격파실', '도수치료실', '물리치료실'] %}
-<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', rooms[0]) }}<span class="cap">{{ rooms[0] }}</span></div>
+{% set rooms = [('접수 데스크','tour-1.jpg'), ('로비·대기실','tour-2.jpg'), ('진료실','tour-3.jpg'), ('초음파실','tour-us.jpg'), ('C-arm 시술실','tour-4.jpg'), ('X-ray실','tour-5.jpg'), ('체외충격파실','tour-6.jpg'), ('도수치료실','tour-7.jpg'), ('물리치료실','tour-8.jpg')] %}
+<div class="main ph" data-name="tour-main.jpg">{{ img('tour-main.jpg', rooms[0][0]) }}<span class="cap">{{ rooms[0][0] }}</span></div>
 <div class="thumbs">
-  {% for r in rooms %}<div class="ph{% if loop.first %} on{% endif %}" data-name="tour-{{ loop.index }}.jpg" role="button" tabindex="0" aria-label="{{ r }} 보기">{{ img('tour-' ~ loop.index ~ '.jpg', r, True, 800, 533) }}</div>{% endfor %}
+  {% for r, f in rooms %}<div class="ph{% if loop.first %} on{% endif %}" data-name="{{ f }}" role="button" tabindex="0" aria-label="{{ r }} 보기">{{ img(f, r, True, 800, 533) }}</div>{% endfor %}
 </div>
 {%- endmacro %}
 
