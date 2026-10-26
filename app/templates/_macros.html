@@ -28,7 +28,7 @@
            {'spine': url_for('pages.clinic', tab='spine'), 'joint': url_for('pages.clinic', tab='joint'), 'nonsurgical': url_for('pages.clinic', tab='nonsurgical'), 'manual': url_for('pages.clinic', tab='manual')} %}
 <div class="clinics">
   <a href="{{ L.spine }}"><div class="ic"><img src="{{ svg('icon-spine') }}" alt="" width="54" height="54"></div><h3>척추클리닉</h3><p>목·허리 디스크, 척추관협착증,<br>일자목·거북목, 교통사고 후유증,<br>수술 후 통증</p></a>
-  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>무릎 관절염, 오십견·회전근개,<br>테니스엘보·골프엘보,<br>어깨 석회화건염</p></a>
+  <a href="{{ L.joint }}"><div class="ic"><img src="{{ svg('icon-joint') }}" alt="" width="54" height="54"></div><h3>관절클리닉</h3><p>회전근개파열, 오십견,<br>석회화건염, 무릎 관절염,<br>테니스엘보·골프엘보</p></a>
   <a href="{{ L.nonsurgical }}"><div class="ic"><img src="{{ svg('icon-injection') }}" alt="" width="54" height="54"></div><h3>비수술클리닉</h3><p>신경차단술, DNA 주사,<br>프롤로 주사, 체외충격파,<br>두통·대상포진 통증</p></a>
   <a href="{{ L.manual }}"><div class="ic"><img src="{{ svg('icon-manual') }}" alt="" width="54" height="54"></div><h3>도수·운동클리닉</h3><p>만성통증 도수치료, 근막 이완,<br>체형교정, 1:1 맞춤 운동치료</p></a>
 </div>
@@ -82,6 +82,7 @@
     <div class="grid">
       <figure>{{ ph('equip-1.jpg', '', '', 'C-arm 시술실', True, 1200, 800) }}<figcaption><h3>C-arm 시술실</h3><p>신경차단술·DNA 주사 시 실시간 영상으로 바늘 위치를 확인합니다.</p></figcaption></figure>
       <figure>{{ ph('equip-2.jpg', '', '', 'X-ray·골밀도 검사실', True, 1200, 800) }}<figcaption><h3>X-ray · 골밀도 검사실</h3><p>척추·관절 상태와 골밀도를 확인해 치료 계획의 기준을 잡습니다.</p></figcaption></figure>
+      <figure>{{ ph('equip-us.jpg', '', '', '초음파실', True, 1200, 800) }}<figcaption><h3>초음파실</h3><p>근골격계 초음파로 인대·힘줄·근육 상태를 직접 보면서 진단하고, 초음파 유도 주사에 활용합니다.</p></figcaption></figure>
       <figure>{{ ph('equip-3.jpg', '', '', '체외충격파 치료', True, 1200, 800) }}<figcaption><h3>체외충격파실</h3><p>힘줄·인대 통증 부위에 충격파를 가해 회복을 돕습니다. 물리·도수치료와 이어서 받습니다.</p></figcaption></figure>
     </div>
   </div>
@@ -118,7 +119,7 @@
     <h3><b>관절</b>은 한 번 닳으면 되돌리기 어렵습니다.<br><b>늦기 전에 지키는 치료</b>를 합니다.</h3>
     <p class="body">무릎·어깨·손목·발목 관절은 매일 쓰는 만큼 손상도 빠릅니다. 통증을 참고 지내다 보면 연골과 인대 손상이 진행되어 치료 선택지가 줄어듭니다. 초음파로 인대·힘줄 상태를 확인하고, DNA 주사·체외충격파·도수치료를 조합해 관절 기능을 최대한 보존합니다.</p>
     <span class="tag">관절질환의 종류</span>
-    <ul class="two"><li>무릎 관절염</li><li>오십견·회전근개 손상</li><li>테니스엘보·골프엘보</li><li>어깨 석회화건염</li><li>아킬레스건염</li><li>발목 염좌</li></ul>
+    <ul class="two"><li>회전근개파열</li><li>오십견</li><li>석회화건염</li><li>무릎 관절염</li><li>테니스엘보·골프엘보</li></ul>
     <span class="tag">관절질환에 적용되는 비수술치료</span>
     <ul class="tx">
       <li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>연골주사</li><li><i><img src="{{ svg('icon-injection') }}" alt="" width="30" height="30"></i>프롤로·DNA 주사</li>
@@ -163,9 +164,9 @@
     <div class="slider">
       <div class="track">
         <div class="card">{{ ph('card-disc.jpg', '', 'im', '허리·목 디스크', True, 800, 500) }}<div class="tt"><h3>허리·목 디스크</h3><p>튀어나온 디스크가 신경을 눌러 생기는 통증·저림</p></div></div>
-        <div class="card">{{ ph('card-headache.jpg', '', 'im', '두통', True, 800, 500) }}<div class="tt"><h3>긴장성 두통·경추성 두통</h3><p>목·어깨 근육 긴장과 경추 문제에서 오는 만성 두통</p></div></div>
         <div class="card">{{ ph('card-stenosis.jpg', '', 'im', '척추관협착증', True, 800, 500) }}<div class="tt"><h3>척추관협착증</h3><p>신경이 지나는 통로가 좁아져 오래 걷기 힘든 증상</p></div></div>
         <div class="card">{{ ph('card-shoulder.jpg', '', 'im', '대상포진 후 신경통', True, 800, 500) }}<div class="tt"><h3>대상포진 후 신경통</h3><p>대상포진이 지나간 뒤에도 남는 타는 듯한 신경통</p></div></div>
+        <div class="card">{{ ph('card-headache.jpg', '', 'im', '두통', True, 800, 500) }}<div class="tt"><h3>긴장성 두통·경추성 두통</h3><p>목·어깨 근육 긴장과 경추 문제에서 오는 만성 두통</p></div></div>
         <div class="card">{{ ph('card-neck.jpg', '', 'im', '일자목·거북목', True, 800, 500) }}<div class="tt"><h3>일자목·거북목</h3><p>목 곡선이 사라져 생기는 두통·어깨 결림</p></div></div>
       </div>
       <button class="arr l" type="button" aria-label="이전">‹</button><button class="arr r" type="button" aria-label="다음">›</button>
