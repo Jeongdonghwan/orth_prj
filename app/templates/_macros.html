@@ -206,20 +206,3 @@
   </div>
 </div>
 {%- endmacro %}
-
-{# 상담 문의 폼. prefix 로 id 충돌 방지 #}
-{% macro inquiry_form(prefix, title='상담 문의', modal=False) -%}
-<form class="form inq-form" id="{{ prefix }}-form" method="post" action="/api/inquiry" novalidate>
-  {% if modal %}<button class="x" type="button" aria-label="닫기">×</button>{% endif %}
-  {% if title %}<h3{% if modal %} id="inqModalTitle"{% endif %}>{{ title }}</h3>{% endif %}
-  <div class="row"><label for="{{ prefix }}-name">이름 <i>*</i></label><input id="{{ prefix }}-name" name="name" type="text" maxlength="50" required autocomplete="name"></div>
-  <div class="row"><label for="{{ prefix }}-phone">연락처 <i>*</i></label><input id="{{ prefix }}-phone" name="phone" type="tel" maxlength="20" required autocomplete="tel" placeholder="010-0000-0000"></div>
-  <div class="row"><label for="{{ prefix }}-part">증상 부위</label>
-    <select id="{{ prefix }}-part" name="part"><option value="목">목</option><option value="허리">허리</option><option value="무릎">무릎</option><option value="어깨">어깨</option><option value="기타">기타</option></select></div>
-  <div class="row"><label for="{{ prefix }}-message">문의 내용</label><textarea id="{{ prefix }}-message" name="message" maxlength="2000" placeholder="증상과 희망 진료 시간을 적어 주세요."></textarea></div>
-  <div class="hp" aria-hidden="true"><label for="{{ prefix }}-website">website</label><input id="{{ prefix }}-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-  <div class="row"><label class="agree"><input name="agree" type="checkbox" required><span>[필수] 상담 목적으로 이름·연락처를 수집하며, 상담 완료 후 1년 보관 뒤 파기합니다. 동의하지 않으면 접수할 수 없습니다.</span></label></div>
-  <button class="btn on" type="submit">문의 접수</button>
-  <p class="msg" aria-live="polite"></p>
-</form>
-{%- endmacro %}

@@ -107,40 +107,5 @@
   // ---- TOP ----
   document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); scrollTo({ top: 0, behavior: 'smooth' }); }));
 
-  // ---- 상담 예약 모달 ----
-  const modal = document.getElementById('inqModal');
-  if (modal) {
-    const open = e => { e.preventDefault(); modal.classList.add('on'); const f = modal.querySelector('input[name="name"]'); if (f) f.focus(); };
-    const close = () => modal.classList.remove('on');
-    document.querySelectorAll('[data-open-inquiry]').forEach(a => a.addEventListener('click', open));
-    modal.querySelector('.x').addEventListener('click', close);
-    modal.addEventListener('click', e => { if (e.target === modal) close(); });
-    addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-  }
-
-  // ---- 상담 문의 폼 → POST /api/inquiry ----
-  const digits = s => (s || '').replace(/[^0-9]/g, '');
-  document.querySelectorAll('.inq-form').forEach(f => f.addEventListener('submit', async e => {
-    e.preventDefault();
-    const msg = f.querySelector('.msg'), btn = f.querySelector('button[type="submit"]');
-    const data = {
-      name: f.name.value.trim(), phone: f.phone.value.trim(), part: f.part.value,
-      message: f.message.value.trim(), agree: f.agree.checked, website: f.website.value
-    };
-    msg.className = 'msg';
-    if (data.name.length < 2) { msg.textContent = '이름을 입력해 주세요.'; msg.classList.add('err'); return; }
-    if (digits(data.phone).length < 9) { msg.textContent = '연락처를 확인해 주세요.'; msg.classList.add('err'); return; }
-    if (!data.agree) { msg.textContent = '개인정보 수집·이용에 동의해 주세요.'; msg.classList.add('err'); return; }
-    btn.disabled = true; msg.textContent = '접수 중…';
-    try {
-      const r = await fetch('/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-      const j = await r.json().catch(() => ({}));
-      if (r.ok && j.ok) { msg.textContent = j.message || '접수되었습니다. 확인 후 연락드리겠습니다.'; f.reset(); }
-      else { msg.textContent = j.message || '접수에 실패했습니다. 전화로 문의해 주세요.'; msg.classList.add('err'); }
-    } catch (_) {
-      msg.textContent = '네트워크 오류입니다. 잠시 후 다시 시도해 주세요.'; msg.classList.add('err');
-    }
-    btn.disabled = false;
-  }));
 
 })();
